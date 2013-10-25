@@ -184,13 +184,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GitHooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BitBucketCommit.cs" />
     <Compile Include="Models\FDContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
