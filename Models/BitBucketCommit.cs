@@ -6,15 +6,10 @@ using System.Linq;
 using System.Web;
 using ForeverDeploy.Extensions;
 
-namespace ArrowManager.Models
+namespace ForeverDeploy.Models
 {
-	[Table("Commits")]
 	public class Commit
 	{
-		[Key]
-		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-		public int ID { get; set; }
-
 		public string author { get; set; }
 		public string message { get; set; }
 		public string raw_node { get; set; }
@@ -56,12 +51,9 @@ namespace ArrowManager.Models
 		[NotMapped]
 		public object revision { get; set; }
 	}
-	[Table("Files")]
+
 	public class File
 	{
-		[Key]
-		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-		public int ID { get; set; }
 		public int? CommitID { get; set; }
 		public virtual Commit Commit { get; set; }
 		public string type { get; set; }

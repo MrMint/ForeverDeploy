@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForeverDeploy.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace ForeverDeploy.Models
 		}
 
 		public DbSet<UserProfile> UserProfiles { get; set; }
-
+		public DbSet<Commit> Commits { get; set; }
 	}
 }

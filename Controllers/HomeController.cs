@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ForeverDeploy.Models;
+using ForeverDeploy.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,6 +29,24 @@ namespace ForeverDeploy.Controllers
 			ViewBag.Message = "Your contact page.";
 
 			return View();
+		}
+
+		public void RunTestCase()
+		{
+			GitUtilities.ProcessNewCommits(new List<Commit>()
+			{
+				new Commit()
+				{
+					message = "This is a commit",
+					branch = "features"
+				},
+				new Commit()
+				{
+					message = "This is a test commit #deploy",
+					branch = "deployTestBranch",
+					utctimestamp = DateTime.UtcNow.ToString()
+				}
+			});
 		}
 	}
 }

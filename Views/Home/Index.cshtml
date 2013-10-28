@@ -43,3 +43,17 @@
         <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
     </li>
 </ol>
+<button onclick="runTest()"></button>
+
+@section Scripts{
+
+    <script>
+        function runTest() {
+            var GenerateNewAuthKey = $.ajax({
+                url: "@(Url.Action("RunTestCase"))",
+                type: "POST",
+                dataType: "text"
+            });
+        }
+    </script>
+}
