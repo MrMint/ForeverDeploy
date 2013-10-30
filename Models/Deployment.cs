@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,26 +12,46 @@ namespace ForeverDeploy.Models
 	public class Deployment
 	{
 		[Key]
+		[JsonIgnore]
 		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		public int DateDeployed { get; set; }
-
-		public DeploymentStatus DeploymentStatus { get; set; }
+		[JsonIgnore]
+		public DateTime DateDeployedUTC { get; set; }
 
 		//Commit foreign key
+		[JsonIgnore]
 		public int CommitId { get; set; }
 		
 		//Lazy loaded commit object
 		public virtual DeployedCommit Commit { get; set; }
+
+		//Current status of the deployment
+		public DeploymentStatus DeploymentStatus { get; set; }
+
+		//Returns the UTC date of the deployment in ticks
+		[JsonProperty("dateDeployedUTCTicks")]
+		public long DateDeployedUTCTicks
+		{
+			get
+			{
+				return DateDeployedUTC.Ticks;
+			}
+		}
+
+		//Number of build warnings
+		[JsonProperty("buildWarnings")]
+		public int BuildWarnings { get; set; }
+
+		//Number of build errors
+		[JsonProperty("buildErrors")]
+		public int BuildErrors { get; set; }
+
+		//Estimated percent complete of deployment
+		[NotMapped]
+		[JsonProperty("percentComplete")]
+		public int PercentComplete { get; set; }
 	}
 
-	//Enumerator representing deployment state
-	public enum DeploymentStatus : byte
-	{
-		Pulling,
-		Compiling,
-		Starting,
-		Deployed
-	}
+
 }

@@ -15,6 +15,7 @@ namespace ForeverDeploy.Models
 		}
 
 		public DbSet<UserProfile> UserProfiles { get; set; }
-		public DbSet<Commit> Commits { get; set; }
+		public DbSet<DeployedCommit> DeployedCommits { get; set; }
+		public DbSet<Deployment> Deployments { get; set; }
 	}
 }

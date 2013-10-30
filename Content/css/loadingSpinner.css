@@ -1,0 +1,26 @@
+﻿.spinner {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    border: dashed 4px green;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+    .spinner.small {
+        height: 15px;
+        width: 15px;
+         border: dashed 2px green;
+    }
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

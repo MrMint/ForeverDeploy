@@ -1,0 +1,25 @@
+﻿html {
+    background-color: rgb(226, 226, 226);
+    font-family: 'Share Tech', sans-serif;
+}
+
+header {
+    background-color: rgb(0, 0, 0);
+    padding-left:25px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+body {
+background-color: rgb(239, 238, 239);
+margin:0px;
+}
+h1 {
+    color:#5fc2af;
+    margin:0px;
+
+}
+
+.container {
+    width:100%;
+}

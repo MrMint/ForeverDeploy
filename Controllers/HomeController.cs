@@ -1,5 +1,6 @@
 ﻿using ForeverDeploy.Models;
 using ForeverDeploy.Utilities;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,43 +11,41 @@ namespace ForeverDeploy.Controllers
 {
 	public class HomeController : Controller
 	{
+		//Logger
+		private static Logger log = LogManager.GetCurrentClassLogger();
+
 		public ActionResult Index()
 		{
-			ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-			return View();
-		}
-
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your app description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
 			return View();
 		}
 
 		public void RunTestCase()
 		{
-			GitUtilities.ProcessNewCommits(new List<Commit>()
+			log.Debug("Running deploy test");
+			try
 			{
-				new Commit()
+				//Process the new commits
+				var commits = new List<Commit>()
 				{
-					message = "This is a commit",
-					branch = "features"
-				},
-				new Commit()
-				{
-					message = "This is a test commit #deploy",
-					branch = "deployTestBranch",
-					utctimestamp = DateTime.UtcNow.ToString()
-				}
-			});
+					new Commit()
+					{
+						message = "This is a commit",
+						branch = "features"
+					},
+					new Commit()
+					{
+						message = "This is a test commit #deploy",
+						branch = "master",
+						raw_node = "aadv31456134613461345yqefyqey34",
+						utctimestamp = DateTime.UtcNow.ToString()
+					}
+				};
+				DeploymentManager.Instance.DeployNewCommits(commits);
+			}
+			catch (Exception e)
+			{
+				log.Error("Error in deploy test: {0}, Trace: {1}", e.Message, e.StackTrace);
+			}
 		}
 	}
 }
