@@ -12,8 +12,15 @@
     background-color: #fff;
     font-size: 16px;
     padding: 2%;
-    position:relative;
-    float:left;
+    position: relative;
+    float: left;
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.39);
+    transition:height .25s ease-in-out;
+    overflow:hidden;
+    height:228px;
+}
+.deployment.hideLog {
+    height:90px;
 }
 
 .deploymentIcon {
@@ -38,9 +45,11 @@
     float: left;
     min-height: 105px;
 }
+
 .deployedOn {
-    margin-top:-10px;
+    margin-top: -10px;
 }
+
 .deployCommitId {
     float: left;
     width: 33%;
@@ -56,6 +65,19 @@
     width: 33%;
 }
 
+.deployStatus {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:5px;
+    height:100%;
+    transition:all .5s linear;
+    opacity:1;
+}
+    .deployStatus.hidden {
+        opacity:0;
+        display:inherit;
+    }
 .fast {
     -webkit-animation: spin 1.25s infinite linear;
     -moz-animation: spin 1.25s infinite linear;
@@ -64,26 +86,38 @@
 }
 
 .row {
-    line-height:33px;
+    line-height: 33px;
     height: 39.5px;
     width: 100%;
 }
 
 .logIconStatus {
-    width:10%;
-    float:left;
+    width: 10%;
+    float: left;
 }
+
+.logTime {
+    width: 15%;
+    float: left;
+    font-size: 13px;
+    line-height:18px;
+}
+
 .logMessage {
-    width:70%;
-    float:left;
-    font-size:14px;
+    width: 65%;
+    float: left;
+    font-size: 14px;
+}
+.logViewLog {
+    width: 10%;
+    float: right;
+    font-size: 14px;
 }
 .logRow {
-    padding-top:5px;
-     padding-bottom:5px;
-    float:left;
-    width:100%;
-
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: left;
+    width: 100%;
 }
 
 .rowDivider {
@@ -97,4 +131,11 @@
     font-size: 13px;
     color: #408275;
     font-weight: 600;
+}
+
+.expander {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
 }

@@ -3,16 +3,20 @@
     ViewBag.Header = "ForeverDeploy";
 }
 <div class="bodyContainer">
-    <div id="currentDeployment" class="deployment">
+    <div id="currentDeployment" class="deployment hideLog">
+        <div class="deployStatus bgGreen"></div>
         <div class="deploymentDashboard">
             <div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>
             <div class="deploymentInfo">
+
                 <div class="row">
                     <div class="deployedOn"><i class="fa fa-check-circle green"></i><span class="activeText"> ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;Friday, October 04, 2013 12:14 PM</div>
                 </div>
+
                 <div class="row">
                     <div class="deployedMessage">Big update, borked local project and wasnt commiting, shame on me</div>
                 </div>
+
                 <div class="row">
                     <div class="deployedInfo">
                         <div class="deployCommitId">COMMIT: <a class="commitIdLink" href="www.google.com">2346246246</a></div>
@@ -20,11 +24,15 @@
                         <div class="deployBranchName">BRANCH: <span class="branchName">master</span></div>
                     </div>
                 </div>
+
             </div>
+
             <div class="percentSpinnerContainer">
                 <div id="percent"></div>
                 <svg id="svg"></svg>
             </div>
+
+            <div class="expander" onclick="showHideLog($(this),$(this).parent().parent())"><i class="fa fa-chevron-up"></i></div>
         </div>
         <div class="deploymentLog">
             <div class="rowDivider"></div>
@@ -34,6 +42,8 @@
                     <i class="fa fa-check-circle green"></i>
                     <i class="fa fa-exclamation-circle red"></i>
                 </div>
+
+                <div class="logTime">12:14:23 PM</div>
                 <div class="logMessage">Preparing deployment for commit id '63452y2rhgf'.</div>
             </div>
             <div class="rowDivider"></div>
@@ -43,6 +53,7 @@
                     <i class="fa fa-check-circle green"></i>
                     <i class="fa fa-exclamation-circle red"></i>
                 </div>
+                <div class="logTime">12:14:25 PM</div>
                 <div class="logMessage">Updating the repository.</div>
             </div>
             <div class="rowDivider"></div>
@@ -52,7 +63,9 @@
                     <i class="fa fa-check-circle green"></i>
                     <i class="fa fa-exclamation-circle red"></i>
                 </div>
+                <div class="logTime">12:13:21 PM</div>
                 <div class="logMessage">Building the project.</div>
+                <a class="logViewLog blue">View Log</a>
             </div>
             <div class="rowDivider"></div>
             <div class="logRow">
@@ -61,6 +74,7 @@
                     <i class="fa fa-check-circle green"></i>
                     <i class="fa fa-exclamation-circle red"></i>
                 </div>
+                <div class="logTime">12:16:53 PM</div>
                 <div class="logMessage">Deployment successful.</div>
             </div>
             <div class="rowDivider"></div>

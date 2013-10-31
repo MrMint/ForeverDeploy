@@ -26,6 +26,7 @@ namespace ForeverDeploy
 			bundles.Add(new ScriptBundle("~/Content/js/site").Include(
 				"~/Scripts/snap.svg-min.js",
 				"~/Content/js/percentSpinner.js",
+				"~/Content/js/deployment.js",
 				"~/Scripts/jquery.signalR-{version}.js"
 				));
 
@@ -36,7 +37,7 @@ namespace ForeverDeploy
 				"~/Content/css/deployment.css"
 				));
 
-			bundles.Add(new StyleBundle("~/Content/vendor/fontawesome/virtual").Include(
+			bundles.Add(new StyleBundle("~/Content/vendor/fontawesome/virtual/icons").Include(
 				"~/Content/vendor/fontawesome/css/font-awesome.css"
 				));
 

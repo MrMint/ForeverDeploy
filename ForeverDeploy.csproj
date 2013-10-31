@@ -258,6 +258,8 @@
     <Content Include="Content\css\loadingSpinner.css" />
     <Content Include="Content\css\percentSpinner.css" />
     <Content Include="Content\css\site.css" />
+    <Content Include="Content\img\infinity-single-black.svg" />
+    <Content Include="Content\js\deployment.js" />
     <Content Include="Content\js\percentSpinner.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

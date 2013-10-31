@@ -15,74 +15,119 @@ html {
 }
 
 header {
-    background-color: #000;
-    padding-left: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom:50px;
 }
 
 body {
     /*background-color: rgb(239, 238, 239);*/
     background: #313131;
     margin: 0px;
-
 }
 
 footer {
-    position:fixed;
-    bottom:0px;
-    left:15px;
-    color:rgba(0, 0, 0, 0.32)
+    position: fixed;
+    bottom: 0px;
+    left: 15px;
+    color: rgba(0, 0, 0, 0.32);
     /*background-color: rgb(226, 226, 226);*/
 }
-h1 {
-    color: #5fc2af;
-    margin: 0px;
-    font-size: 28px;
-    line-height: 28px;
-    font-weight:300;
+
+.nav {
+    height: 31px;
+    background-color: #000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+    width: 100%;
+    float: left;
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.39);
 }
 
-.bodyContainer {
-    width:800px;
-    margin:auto;
+    .nav .brand {
+        padding-left: 25px;
+        color: #5fc2af;
+        margin: 0px;
+        font-size: 28px;
+        line-height: 28px;
+        font-weight: 300;
+        float: left;
+    }
+
+.spacerRight {
+    width: 25px;
+    height: 20px;
+    float: right;
 }
+
+.nav .navLink {
+    text-align: center;
+    color: #5fc2af;
+    line-height: 28px;
+    font-weight: 300;
+    float: right;
+    width: 100px;
+}
+
+    .nav .navLink a {
+        color: #5fc2af;
+        line-height: 28px;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
+        .nav .navLink a:hover {
+            color: #fff;
+        }
+.brandLogo {
+    position:absolute;
+    top:-35px;
+    left:30px;
+    fill:#5FC2AF !important;
+    width:170px;
+    opacity:.1;
+    z-index:1;
+}
+.bodyContainer {
+    width: 800px;
+    margin: auto;
+}
+
 .container {
     width: 100%;
-    
 }
 
 .blue {
-    font-size:18px;
+    font-size: 18px;
     color: #5FC1F5;
 }
 
 .gray {
-    font-size:18px;
+    font-size: 18px;
     color: #52585C;
 }
 
 .teal {
-    font-size:18px;
+    font-size: 18px;
     color: #5FC2AF;
 }
 
 .salmon {
-    font-size:18px;
+    font-size: 18px;
     color: #CA6D60;
 }
 
 .red {
-    font-size:18px;
+    font-size: 18px;
     color: #F55F6A;
 }
 
 .green {
-    font-size:18px;
+    font-size: 18px;
     color: #408275;
 }
 
+.bgGreen {
+    background-color: #408275;
+}
 .hidden {
-    display:none;
+    display: none;
 }
