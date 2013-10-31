@@ -1,4 +1,4 @@
-﻿var canvasSize = 200,
+﻿var canvasSize = 80,
     centre = canvasSize / 2,
     radius = canvasSize * 0.8 / 2,
     s = Snap('#svg'),
@@ -8,16 +8,6 @@
     runBtn = document.getElementById('run'),
     percDiv = document.getElementById('percent'),
     input = document.getElementById('input');
-
-input.onkeyup = function (evt) {
-    if (isNaN(input.value)) {
-        input.value = '';
-    }
-};
-
-runBtn.onclick = function () {
-    run(50/100,input.value / 100);
-};
 
 function run(startPercent, endPercent) {
     var startPoint = startPercent * 360;
@@ -40,10 +30,12 @@ function run(startPercent, endPercent) {
             strokeWidth: 12
         });
         percDiv.innerHTML = Math.round(val / 360 * 100) + '%';
+        if (percDiv.innerHTML == "100%")
+            percDiv.classList.add('hidden');
 
     }, 2000, mina.easeinout);
 }
 
 
-
+run(0, 1);
 

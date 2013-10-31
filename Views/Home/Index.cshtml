@@ -2,45 +2,79 @@
     ViewBag.Title = "Status";
     ViewBag.Header = "ForeverDeploy";
 }
-
-<div id="currentDeployment" class="deployment">
-    <div class="deploymentDashboard">
-        <div class="deploymentIcon"></div>
-        <div class="deploymentInfo">
-            <div class="row">
-                <div class="deployedOn"></div>
-            </div>
-            <div class="row">
-                <div class="deployedMessage"></div>
-            </div>
-            <div class="row">
-                <div class="deployedInfo">
-                    <div class="deployCommitId">COMMIT: <a class="commitIdLink"></a></div>
-                    <div class="deployAuthor">AUTHOR: <span class="authorName"></span></div>
-                    <div class="deployBranchName">BRANCH: <span class="branchName"></span></div>
+<div class="bodyContainer">
+    <div id="currentDeployment" class="deployment">
+        <div class="deploymentDashboard">
+            <div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>
+            <div class="deploymentInfo">
+                <div class="row">
+                    <div class="deployedOn"><i class="fa fa-check-circle green"></i><span class="activeText"> ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;Friday, October 04, 2013 12:14 PM</div>
+                </div>
+                <div class="row">
+                    <div class="deployedMessage">Big update, borked local project and wasnt commiting, shame on me</div>
+                </div>
+                <div class="row">
+                    <div class="deployedInfo">
+                        <div class="deployCommitId">COMMIT: <a class="commitIdLink" href="www.google.com">2346246246</a></div>
+                        <div class="deployAuthor">AUTHOR: <span class="authorName">Jared Prather</span></div>
+                        <div class="deployBranchName">BRANCH: <span class="branchName">master</span></div>
+                    </div>
                 </div>
             </div>
+            <div class="percentSpinnerContainer">
+                <div id="percent"></div>
+                <svg id="svg"></svg>
+            </div>
+        </div>
+        <div class="deploymentLog">
+            <div class="rowDivider"></div>
+            <div class="logRow">
+                <div class="logIconStatus">
+                    <i class="fa fa-refresh fa-spin blue fast"></i>
+                    <i class="fa fa-check-circle green"></i>
+                    <i class="fa fa-exclamation-circle red"></i>
+                </div>
+                <div class="logMessage">Preparing deployment for commit id '63452y2rhgf'.</div>
+            </div>
+            <div class="rowDivider"></div>
+            <div class="logRow">
+                <div class="logIconStatus">
+                    <i class="fa fa-refresh fa-spin blue fast"></i>
+                    <i class="fa fa-check-circle green"></i>
+                    <i class="fa fa-exclamation-circle red"></i>
+                </div>
+                <div class="logMessage">Updating the repository.</div>
+            </div>
+            <div class="rowDivider"></div>
+            <div class="logRow">
+                <div class="logIconStatus">
+                    <i class="fa fa-refresh fa-spin blue fast"></i>
+                    <i class="fa fa-check-circle green"></i>
+                    <i class="fa fa-exclamation-circle red"></i>
+                </div>
+                <div class="logMessage">Building the project.</div>
+            </div>
+            <div class="rowDivider"></div>
+            <div class="logRow">
+                <div class="logIconStatus">
+                    <i class="fa fa-refresh fa-spin blue fast"></i>
+                    <i class="fa fa-check-circle green"></i>
+                    <i class="fa fa-exclamation-circle red"></i>
+                </div>
+                <div class="logMessage">Deployment successful.</div>
+            </div>
+            <div class="rowDivider"></div>
         </div>
     </div>
-    <div class="deploymentLog">
-    </div>
+    @*<button onclick="runTest()">Test System</button>*@
+
+
 </div>
-
-<div class="spinner small"></div>
-<div class="spinner small"></div>
-<div class="spinner small"></div>
-<div class="spinner small"></div>
-<div class="spinner small"></div>
-<button onclick="runTest()">Test System</button>
-
-<div class="percentSpinnerContainer">
-    <div id="percent"></div>
-    <svg id="svg"></svg>
-    <p>
+@*    <p>
         <label for="perc-input">Percent:</label><input maxlength="2" type="text" id="input" value="65" /></p>
-    <a class="btn" id="run">Run</a>
-</div>
+    <a class="btn" id="run">Run</a>*@
 
+@*<div class="spinner small"></div>*@
 @section Scripts{
 
     <script>

@@ -1,25 +1,88 @@
-﻿html {
-    background-color: rgb(226, 226, 226);
-    font-family: 'Share Tech', sans-serif;
+﻿/* COLOR PALLETE
+    blue: 5FC1F5
+    gray: 52585C
+    teal: 5FC2AF
+    salmon: CA6D60
+    red: F55F6A
+    green: 408275
+*/
+
+html {
+    /*background-color: rgb(226, 226, 226);*/
+    /*background-color: rgb(32, 32, 32);*/
+    /*background-color: #000;*/
+    font-family: 'Lato', sans-serif;
 }
 
 header {
-    background-color: rgb(0, 0, 0);
-    padding-left:25px;
-    padding-top:10px;
-    padding-bottom:10px;
+    background-color: #000;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom:50px;
 }
 
 body {
-background-color: rgb(239, 238, 239);
-margin:0px;
+    /*background-color: rgb(239, 238, 239);*/
+    background: #313131;
+    margin: 0px;
+
+}
+
+footer {
+    position:fixed;
+    bottom:0px;
+    left:15px;
+    color:rgba(0, 0, 0, 0.32)
+    /*background-color: rgb(226, 226, 226);*/
 }
 h1 {
-    color:#5fc2af;
-    margin:0px;
-
+    color: #5fc2af;
+    margin: 0px;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight:300;
 }
 
+.bodyContainer {
+    width:800px;
+    margin:auto;
+}
 .container {
-    width:100%;
+    width: 100%;
+    
+}
+
+.blue {
+    font-size:18px;
+    color: #5FC1F5;
+}
+
+.gray {
+    font-size:18px;
+    color: #52585C;
+}
+
+.teal {
+    font-size:18px;
+    color: #5FC2AF;
+}
+
+.salmon {
+    font-size:18px;
+    color: #CA6D60;
+}
+
+.red {
+    font-size:18px;
+    color: #F55F6A;
+}
+
+.green {
+    font-size:18px;
+    color: #408275;
+}
+
+.hidden {
+    display:none;
 }

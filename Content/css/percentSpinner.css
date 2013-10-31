@@ -2,18 +2,20 @@
   background: #efefef;
 }
 
-.container {
-  width: 400px;
-  height: 200px;
-  position: relative;
+.percentSpinnerContainer {
+    position:absolute;
+    top:12px;
+    right:-10px;
+  width: 100px;
+  height: 100px;
   margin: auto;
   font-family: 'Share Tech', sans-serif;
   color: #444;
 }
 
 #percent, #svg {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   position: absolute;
   top: 0;
   left: 0;
@@ -22,9 +24,9 @@
 #percent {
   line-height: 20px;
   height: 20px;
-  top: 90px;
-  font-size: 43px;
-  text-align: center;
+  top: 30px;
+  left:24px;
+  font-size: 18px;
   color: #3da08d;
   opacity: 0.8
 }
