@@ -1,2 +1,3 @@
-﻿function HistoryCtrl($scope, $location, $http) {
+﻿function HistoryCtrl($scope) {
 }
+HistoryCtrl.$inject = ['$scope']

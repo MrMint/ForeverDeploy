@@ -1,4 +1,4 @@
-﻿function MainCtrl($scope, $location, $rootScope, $http) {
+﻿function MainCtrl($scope) {
 
     //Helper function for safely broadcasting events from outside js
     $scope.broadcastEventSafe = function (eventType, value) {
@@ -13,3 +13,4 @@
     }
 
 }
+MainCtrl.$inject = ['$scope']

@@ -1,4 +1,4 @@
-﻿function DashboardCtrl($scope, $location, $http) {
+﻿function DashboardCtrl($scope) {
     $scope.pageTitle = "Dashboard";
     $scope.deployments = [];
     
@@ -7,4 +7,4 @@
     });
 }
 
-
+DashboardCtrl.$inject = ['$scope']
