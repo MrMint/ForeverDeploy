@@ -9,7 +9,8 @@ namespace ForeverDeploy
 		public static void RegisterBundles(BundleCollection bundles)
 		{
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-						"~/Scripts/jquery-{version}.js"));
+						"~/Scripts/jquery-{version}.js",
+						"~/Scripts/jquery.signalR-{version}.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
 						"~/Scripts/jquery-ui-{version}.js"));
@@ -27,14 +28,22 @@ namespace ForeverDeploy
 				"~/Scripts/snap.svg-min.js",
 				"~/Content/js/percentSpinner.js",
 				"~/Content/js/deployment.js",
-				"~/Scripts/jquery.signalR-{version}.js"
+				"~/Content/vendor/angular/js/angular.js",
+				"~/Content/vendor/angular/js/angular-route.js",
+				"~/Content/js/foreverDeploy.js",
+				"~/Content/js/controllers/dashboard.js",
+				"~/Content/js/controllers/main.js",
+				"~/Content/js/controllers/history.js",
+				"~/Content/js/helpers.js",
+				"~/Content/js/webSockets.js"
 				));
 
 			bundles.Add(new StyleBundle("~/Content/css/site").Include(
 				"~/Content/css/site.css",
 				"~/Content/css/loadingSpinner.css",
 				"~/Content/css/percentSpinner.css",
-				"~/Content/css/deployment.css"
+				"~/Content/css/deployment.css",
+				"~/Content/vendor/animate/css/animate.css"
 				));
 
 			bundles.Add(new StyleBundle("~/Content/vendor/fontawesome/virtual/icons").Include(

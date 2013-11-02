@@ -37,7 +37,7 @@ namespace ForeverDeploy.Models
 		public string Message { get; set; }
 
 		//Commit node
-		[JsonIgnore]
+		[JsonProperty("rawNode")]
 		public string RawNode { get; set; }
 
 		[JsonIgnore]

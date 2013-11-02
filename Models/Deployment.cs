@@ -24,9 +24,11 @@ namespace ForeverDeploy.Models
 		public int CommitId { get; set; }
 		
 		//Lazy loaded commit object
+		[JsonProperty("commit")]
 		public virtual DeployedCommit Commit { get; set; }
 
 		//Current status of the deployment
+		[JsonProperty("deploymentStatus")]
 		public DeploymentStatus DeploymentStatus { get; set; }
 
 		//Returns the UTC date of the deployment in ticks

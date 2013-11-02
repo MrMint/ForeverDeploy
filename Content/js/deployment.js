@@ -1,4 +1,16 @@
-﻿//Helper function for showing/hiding the log for a deployment
+﻿var template;
+
+//$(document).ready(function () {
+//    template = $('#deploymentTemplate').clone();
+//    template.attr('id', '');
+//    $('#deploymentsContainer').prepend(template.clone());
+//});
+
+function append() {
+    $('#deploymentsContainer').prepend(template.clone());
+}
+
+//Helper function for showing/hiding the log for a deployment
 function showHideLog(expander, deployment) {
     //Get deployments classlist, and reverse the current state of hidelog
     var cl = deployment[0].classList;
@@ -20,3 +32,4 @@ function showHideLog(expander, deployment) {
         cl.add('fa-chevron-down');
     }
 }
+

@@ -21,6 +21,13 @@ namespace ForeverDeploy.Utilities
 		//Current Deployment
 		private Deployment deployment;
 
+		public Deployment Deployment
+		{
+			get
+			{
+				return deployment;
+			}
+		}
 		private DeploymentManager()
 		{
 			var db = new FDContext();

@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="foreverDeploy">
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - ForeverDeploy</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @*<link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>*@
-   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
 
     @*<link href='http://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>*@
@@ -15,20 +15,20 @@
     @Styles.Render("~/Content/css/site")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body id="main" ng-controller="MainCtrl as main">
     <header>
+    </header>
+    <div id="body">
         <div class="nav">
-            <img class="brandLogo" src="~/Content/img/infinity-single-black.svg" ></img>
+            <img class="brandLogo" src="~/Content/img/infinity-single-black.svg" />
             <div class="brand">ForeverDeploy</div>
             <div class="spacerRight"></div>
             <div class="navLink"><a href="/Help">Help</a></div>
             <div class="navLink"><a href="/History">History</a></div>
             <div class="navLink"><a href="/Dashboard">Dashboard</a></div>
         </div>
-    </header>
-    <div id="body">
         <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
+            <div ng-view></div>
         </section>
     </div>
     <footer>
@@ -40,8 +40,8 @@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Content/js/site")
     <script src="~/signalr/hubs"></script>
+    @Scripts.Render("~/Content/js/site")
     @RenderSection("scripts", required: false)
 </body>
 </html>

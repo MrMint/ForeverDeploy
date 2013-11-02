@@ -1,0 +1,83 @@
+﻿<div class="deployment hideLog @*animated slideInLeft*@">
+    <div class="deployStatus bgGreen"></div>
+    <div class="deploymentDashboard">
+        <div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>
+        <div class="deploymentInfo">
+
+            <div class="row">
+                <div class="deployedOn" ng-show="deployment.deploymentStatus != 12">
+                    <i class="fa fa-cog blue fa-spin"></i><span class="activeText blue">&nbsp;&nbsp;DEPLOYING....</span>
+                </div>
+                <div class="deployedOn" ng-show="deployment.deploymentStatus == 12">
+                    <i class="fa fa-check-circle green"></i><span class="activeText green">&nbsp;&nbsp;ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;{{}}
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="deployedMessage">{{deployment.commit.message}}</div>
+            </div>
+
+            <div class="row">
+                <div class="deployedInfo">
+                    <div class="deployCommitId" ng-click="test()">COMMIT: <a class="commitIdLink" href="www.google.com">{{deployment.commit.rawNode}}</a></div>
+                    <div class="deployAuthor">AUTHOR: <span class="authorName">{{deployment.commit.author}}</span></div>
+                    <div class="deployBranchName">BRANCH: <span class="branchName">{{deployment.commit.branch}}</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="percentSpinnerContainer">
+            <div id="percent"></div>
+            <svg id="svg"></svg>
+        </div>
+
+        <div class="expander" onclick="showHideLog($(this),$(this).parent().parent())"><i class="fa fa-chevron-up"></i></div>
+    </div>
+    <div class="deploymentLog">
+        <div class="rowDivider"></div>
+        <div class="logRow">
+            <div class="logIconStatus">
+                <i class="fa fa-refresh fa-spin blue fast"></i>
+                <i class="fa fa-check-circle green"></i>
+                <i class="fa fa-exclamation-circle red"></i>
+            </div>
+
+            <div class="logTime">12:14:23 PM</div>
+            <div class="logMessage">Preparing deployment for commit id '63452y2rhgf'.</div>
+        </div>
+        <div class="rowDivider"></div>
+        <div class="logRow">
+            <div class="logIconStatus">
+                <i class="fa fa-refresh fa-spin blue fast"></i>
+                <i class="fa fa-check-circle green"></i>
+                <i class="fa fa-exclamation-circle red"></i>
+            </div>
+            <div class="logTime">12:14:25 PM</div>
+            <div class="logMessage">Updating the repository.</div>
+        </div>
+        <div class="rowDivider"></div>
+        <div class="logRow">
+            <div class="logIconStatus">
+                <i class="fa fa-refresh fa-spin blue fast"></i>
+                <i class="fa fa-check-circle green"></i>
+                <i class="fa fa-exclamation-circle red"></i>
+            </div>
+            <div class="logTime">12:13:21 PM</div>
+            <div class="logMessage">Building the project.</div>
+            <a class="logViewLog blue">View Log</a>
+        </div>
+        <div class="rowDivider"></div>
+        <div class="logRow">
+            <div class="logIconStatus">
+                <i class="fa fa-refresh fa-spin blue fast"></i>
+                <i class="fa fa-check-circle green"></i>
+                <i class="fa fa-exclamation-circle red"></i>
+            </div>
+            <div class="logTime">12:16:53 PM</div>
+            <div class="logMessage">Deployment successful.</div>
+        </div>
+        <div class="rowDivider"></div>
+    </div>
+</div>

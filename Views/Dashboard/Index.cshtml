@@ -1,21 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Status";
-    ViewBag.Header = "ForeverDeploy";
+    ViewBag.Title = "Dashboard";
 }
 <div class="bodyContainer">
     <div id="deploymentsContainer">
         
-        @*<button class="testButton" onclick="runTest()">Test System</button>*@
         <button class="testButton" onclick="append()">Test Append</button>
     </div>
 
 </div>
 @Html.Partial("_DeploymentTemplatePartial")
-@*    <p>
-        <label for="perc-input">Percent:</label><input maxlength="2" type="text" id="input" value="65" /></p>
-    <a class="btn" id="run">Run</a>*@
 
-@*<div class="spinner small"></div>*@
 @section Scripts{
 
     <script>

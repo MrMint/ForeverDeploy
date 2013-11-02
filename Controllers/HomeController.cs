@@ -16,7 +16,7 @@ namespace ForeverDeploy.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			return View("Index");
 		}
 
 		public void RunTestCase()

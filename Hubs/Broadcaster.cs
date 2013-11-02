@@ -26,9 +26,16 @@ namespace ForeverDeploy.Hubs
 			deploymentStatusHubContext = GlobalHost.ConnectionManager.GetHubContext<DeploymentStatusHub>();
 		}
 
-		public void UpdateClients(Deployment deployment)
+		public void UpdateClients(Deployment deployment, string connectionId = null, List<string> connectionIds = null)
 		{
-			deploymentStatusHubContext.Clients.All.updateDeployment(deployment);
+			if (connectionId == null && connectionIds == null)
+			{
+				deploymentStatusHubContext.Clients.All.updateDeployment(deployment);
+			}
+			else if(connectionId != null)
+			{
+				deploymentStatusHubContext.Clients.Client(connectionId).updateDeployment(deployment);
+			}
 		}
 	}
 }
