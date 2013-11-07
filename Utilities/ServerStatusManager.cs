@@ -1,4 +1,5 @@
-﻿using ForeverDeploy.Models;
+﻿using ForeverDeploy.Hubs;
+using ForeverDeploy.Models;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -58,9 +59,23 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
-		public void ChangeServerStatus(string ServerName, ServerStatus status)
+		/// <summary>
+		/// Changes the given servers status, and alerts clients to the change via websockets
+		/// </summary>
+		/// <param name="serverName">Name of the server</param>
+		/// <param name="status">Servers status</param>
+		public void ChangeServerStatus(string serverName, ServerStatus status)
 		{
-			
+			var server = servers.FirstOrDefault(x => x.Name == serverName);
+			if (server != null)
+			{
+				server.ServerStatus = status;
+				Broadcaster.Instance.UpdateClientsServerStatus(server);
+			}
+			else
+			{
+				log.Error("ServerStatus: Unable to find requested server {0}, to update with status {1}",serverName,status);
+			}
 		}
 
 		//Starts all server monitors

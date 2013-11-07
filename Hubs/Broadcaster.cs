@@ -1,4 +1,5 @@
 ﻿using ForeverDeploy.Models;
+using ForeverDeploy.Utilities;
 using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,12 @@ namespace ForeverDeploy.Hubs
 			deploymentStatusHubContext = GlobalHost.ConnectionManager.GetHubContext<DeploymentStatusHub>();
 		}
 
+		/// <summary>
+		/// Sends a deployment to clients
+		/// </summary>
+		/// <param name="deployment">The deployment to be sent.</param>
+		/// <param name="connectionId">The connectionId to send the deployment to.(optional)</param>
+		/// <param name="connectionIds">The list connectionIds to send the deployment to.(optional)</param>
 		public void UpdateClients(Deployment deployment, string connectionId = null, List<string> connectionIds = null)
 		{
 			if (connectionId == null && connectionIds == null)
@@ -42,6 +49,20 @@ namespace ForeverDeploy.Hubs
 		{
 			FDContext db = new FDContext();
 			deploymentStatusHubContext.Clients.Client(connectionId).oldDeployments(db.Deployments.Include("Commit").OrderByDescending(x=>x.DateDeployedUTC).Take(3));
+		}
+
+		/// <summary>
+		/// Send current servers to the client
+		/// </summary>
+		/// <param name="connectionId">ConnectionId to send to.</param>
+		public void SendServerStatus(string connectionId)
+		{
+			deploymentStatusHubContext.Clients.Client(connectionId).updateServers(ServerStatusManager.Instance.Servers);
+		}
+
+		public void UpdateClientsServerStatus(Server server)
+		{
+			deploymentStatusHubContext.Clients.All.updateServers(server);
 		}
 	}
 }
