@@ -14,6 +14,7 @@ namespace ForeverDeploy.Hubs
 		public void Connect()
 		{
 			Broadcaster.Instance.SendOldDeployments(Context.ConnectionId);
+			Broadcaster.Instance.SendServerStatus(Context.ConnectionId);
 		}
 
 		public void UpdateStatus()

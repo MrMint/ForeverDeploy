@@ -77,6 +77,21 @@
     $scope.statusBar = function (index) {
         return statusBar[$scope.deployments[index].deploymentStatus];
     }
+
+    $scope.serverStatusDisplay = function (serverStatus) {
+        switch (serverStatus) {
+            case 0:
+                return "Checking";
+            case 1:
+                return "Offline";
+            case 2:
+                return "Starting";
+            case 3:
+                return "Online";
+            default:
+                return "Connecting";
+        }
+    }
 }
 
 DashboardCtrl.$inject = ['$scope']

@@ -52,13 +52,18 @@ namespace ForeverDeploy.Utilities
 
 		public void Start()
 		{
-			//Open logs
-			logFileStream = new FileStream(String.Format("D:/ForeverDeploy/voxelscape/VoxelscapeServer/PhotonServer/log/{0}.log", logFileName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-			logFileReader = new StreamReader(logFileStream);
-			isMonitoring = true;
+			if (!isMonitoring)
+			{
+				//Open logs
+				logFileStream = new FileStream(String.Format("D:/ForeverDeploy/voxelscape/VoxelscapeServer/PhotonServer/log/{0}.log", logFileName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+				logFileReader = new StreamReader(logFileStream);
 
-			//Start the monitor task
-			monitor = Task.Run(() => Monitor());
+				//Set monitoring status
+				isMonitoring = true;
+
+				//Start the monitor task
+				monitor = Task.Run(() => Monitor());
+			}
 		}
 
 		public void Stop()
@@ -81,7 +86,15 @@ namespace ForeverDeploy.Utilities
 					//Check if server starting
 					if (line.Contains("Application start"))
 					{
-						ServerStatusManager.Instance.ChangeServerStatus(serverName, ServerStatus.Starting);
+						//Special case for proxy server
+						if (serverName == "Proxy")
+						{
+							ServerStatusManager.Instance.ChangeServerStatus(serverName, ServerStatus.Online);
+						}
+						else
+						{
+							ServerStatusManager.Instance.ChangeServerStatus(serverName, ServerStatus.Starting);
+						}
 					}
 					//Check if server stopped
 					else if (line.Contains("Application stop"))
@@ -93,6 +106,8 @@ namespace ForeverDeploy.Utilities
 					{
 						ServerStatusManager.Instance.ChangeServerStatus(serverName, ServerStatus.Online);
 					}
+
+
 				}
 				else
 				{

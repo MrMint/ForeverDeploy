@@ -71,6 +71,7 @@ namespace ForeverDeploy.Utilities
 			{
 				server.ServerStatus = status;
 				Broadcaster.Instance.UpdateClientsServerStatus(server);
+				log.Debug("ServerStatus: server {0}: {1}", serverName, status);
 			}
 			else
 			{

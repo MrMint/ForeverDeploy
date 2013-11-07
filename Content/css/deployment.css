@@ -10,6 +10,7 @@
 }
 
 #deploymentsContainer {
+    float: left;
 }
 
 #deploymentTemplate {
@@ -17,7 +18,8 @@
 }
 
 .deployment {
-    width: calc(100% - 15px);
+    /*Handle padding expansion*/
+    width: calc(100% - 32px);
     background-color: #fff;
     font-size: 16px;
     padding: 2%;
@@ -193,16 +195,44 @@
 }
 
 /* SERVER STATUS*/
+.serverStatusDashboard {
+    display: -webkit-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    width:100%;
+    margin-bottom:30px;
+}
 
 .serverStatusContainer {
-     width:150px;
-     float:left;
+    /*-webkit-flex: 0 0 150px;
+    -ms-flex: 0 0 150px;
+    flex: 0 0 150px;*/
+    width: 150px;
+    height:70px;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.39);
+    position:relative;
 }
 
 .serverName {
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
 }
 
 .serverStatus {
+    font-size: 18px;
+    line-height: 35px;
+    text-align:center;
+    margin-top: -3px;
 }
 
 .serverStatusBar {
@@ -210,5 +240,6 @@
     top: 0;
     left: 0;
     width: 5px;
+    height: 100%;
     transition: background-color .5s linear;
 }
