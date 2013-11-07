@@ -1,4 +1,10 @@
 ﻿function MainCtrl($scope) {
+    $scope.connected = false;
+    
+    $scope.$on("WEBSOCKETS_CONNECTED", function (event) {
+        $scope.connected = true;
+    });
+
 
     //Helper function for safely broadcasting events from outside js
     $scope.broadcastEventSafe = function (eventType, value) {

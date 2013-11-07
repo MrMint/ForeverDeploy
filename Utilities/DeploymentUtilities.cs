@@ -57,7 +57,7 @@ namespace ForeverDeploy.Utilities
 					//Build failed
 					if (line.Contains("Build FAILED."))
 					{
-						built= false;
+						built = false;
 					}
 
 					//Build succeeded
@@ -65,7 +65,7 @@ namespace ForeverDeploy.Utilities
 					{
 						built = true;
 					}
-					
+
 					//Get number of errors
 					if (line.Contains("Error(s)"))
 					{
@@ -93,6 +93,11 @@ namespace ForeverDeploy.Utilities
 						//log.Debug("BUILD: Successful! {0}",line);
 						done = true;
 					}
+				}
+				else
+				{
+					//If at end of file, sleep for 150ms
+					Thread.Sleep(150);
 				}
 
 				//Protect from an infinite loop

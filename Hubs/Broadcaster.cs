@@ -37,5 +37,11 @@ namespace ForeverDeploy.Hubs
 				deploymentStatusHubContext.Clients.Client(connectionId).updateDeployment(deployment);
 			}
 		}
+
+		public void SendOldDeployments(string connectionId)
+		{
+			FDContext db = new FDContext();
+			deploymentStatusHubContext.Clients.Client(connectionId).oldDeployments(db.Deployments.Include("Commit").OrderByDescending(x=>x.DateDeployedUTC).Take(3));
+		}
 	}
 }

@@ -49,7 +49,18 @@ namespace ForeverDeploy.Models
 
 		[JsonProperty("branch")]
 		public string Branch { get; set; }
+		
+		//Commit node
+		[JsonProperty("nodeShort")]
+		public string NodeShort
+		{
+			get
+			{
+				return RawNode.Substring(0, 10);
+			}
+		}
 
+		
 		//Gets the authors name
 		[JsonProperty("authorName")]
 		public string AuthorName

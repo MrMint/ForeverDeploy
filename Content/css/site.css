@@ -124,6 +124,25 @@ footer {
     font-size: 18px;
     color: #408275;
 }
+.bgBlue {
+    background-color: #5FC1F5;
+}
+
+.bgGray {
+    background-color: #52585C;
+}
+
+.bgTeal {
+    background-color: #5FC2AF;
+}
+
+.bgSalmon {
+    background-color: #CA6D60;
+}
+
+.bgRed {
+    background-color: #F55F6A;
+}
 
 .bgGreen {
     background-color: #408275;

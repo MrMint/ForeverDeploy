@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ForeverDeploy.Extensions;
+using System.Threading;
 
 namespace ForeverDeploy.Utilities
 {
@@ -13,6 +15,8 @@ namespace ForeverDeploy.Utilities
 		//Singleton related variables
 		private static volatile DeploymentManager instance;
 		private static object syncRoot = new Object();
+
+		//Deployment lock
 		private static object syncDeploy = new Object();
 
 		//Logger
@@ -122,13 +126,18 @@ namespace ForeverDeploy.Utilities
 		{
 			lock (syncDeploy)
 			{
+				var failed = false;
+				var updated = false;
 				deployment = new Deployment();
 
 				//Process the new commits
-				deployment.Commit = new DeployedCommit(GitUtilities.ProcessNewCommits(commits));
+				var commit = GitUtilities.ProcessNewCommits(commits);
 
-				if (deployment.Commit != null)
+				if (commit != null)
 				{
+					deployment.Commit = new DeployedCommit(commit);
+					deployment.DatePreparedUTC = DateTime.UtcNow;
+					UpdateClients();
 					//Log debug message
 					log.Debug("Found a deployable commit, Branch: {0}, Author: {1}, Message: {2}",
 						deployment.Commit.Branch,
@@ -136,37 +145,73 @@ namespace ForeverDeploy.Utilities
 						deployment.Commit.Message
 						);
 
-					//Valid commit found, update repository
-					var updated = GitUtilities.UpdateRepository(deployment.Commit);
-
-					if (updated)
+					try
 					{
-						//Repo was updated, time to build!
-						log.Debug("BUILD: Compiling");
-						DeploymentManager.Instance.DeploymentStatus = DeploymentStatus.Building;
+						//updated = true;
+						//Thread.Sleep(2000);
 
-						var compiled = DeploymentUtilities.Build(deployment);
-						if (compiled)
+						//Valid commit found, update repository
+						updated = GitUtilities.UpdateRepository(deployment.Commit);
+						deployment.DateUpdatedUTC = DateTime.UtcNow;
+					
+
+					}
+					catch (Exception e)
+					{
+						log.Error("GIT: Failed to update due to exception.");
+						log.LogExceptionExt(e);
+						deployment.DateUpdatedUTC = DateTime.UtcNow;
+						DeploymentStatus = DeploymentStatus.UpdatingRepoFailed;
+						failed = true;
+					}
+
+					if (!failed)
+					{
+						var compiled = false;
+						try
+						{
+							//Repo was updated, time to build!
+							log.Debug("BUILD: Compiling");
+							DeploymentStatus = DeploymentStatus.Building;
+							
+							//Thread.Sleep(3000);
+							//compiled = true;
+
+							compiled = DeploymentUtilities.Build(deployment);
+							deployment.DateBuiltUTC = DateTime.UtcNow;
+						}
+						catch (Exception e)
+						{
+							log.Error("BUILD: Failed to build due to exception.");
+							log.LogExceptionExt(e);
+							deployment.DateBuiltUTC = DateTime.UtcNow;
+							DeploymentStatus = DeploymentStatus.BuildingFailed;
+							failed = true;
+						}
+
+						if (compiled && !failed)
 						{
 							log.Debug("BUILD: Successfully compiled");
-							DeploymentManager.Instance.DeploymentStatus = DeploymentStatus.Deployed;
+							Deployment.DateDeployedUTC = DateTime.UtcNow;
+							DeploymentStatus = DeploymentStatus.Deployed;
+
 						}
-						else
+						else if (!compiled)
 						{
-							log.Error("BUILD: Failed to compile");
-							DeploymentManager.Instance.DeploymentStatus = DeploymentStatus.BuildingFailed;
+							log.Error("BUILD: Failed to due to errors.");
+							Deployment.DateDeployedUTC = DateTime.UtcNow;
+							DeploymentStatus = DeploymentStatus.BuildingFailed;
 						}
-					}
-					else
-					{
-						log.Error("GIT: Failed to update.");
-						DeploymentManager.Instance.DeploymentStatus = DeploymentStatus.UpdatingRepoFailed;
 					}
 				}
 				else
 				{
-					log.Debug("POST: No deployable commits found.");
+					log.Debug("No deployable commits found");
 				}
+
+				FDContext db = new FDContext();
+				db.Deployments.Add(deployment);
+				db.SaveChanges();
 			}
 		}
 

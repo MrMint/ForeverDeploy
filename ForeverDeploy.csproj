@@ -255,6 +255,7 @@
     <Compile Include="Utilities\DeploymentUtilities.cs" />
     <Compile Include="Utilities\GitUtilities.cs" />
     <Compile Include="Utilities\PrivateKeyConfigSessionFactory.cs" />
+    <Compile Include="Utilities\ServerStatusManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\deployment.css" />
@@ -398,6 +399,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Shared\_DeploymentPartial.cshtml" />
+    <Content Include="Views\Shared\_ServerStatusPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

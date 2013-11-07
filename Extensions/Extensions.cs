@@ -7,6 +7,11 @@ namespace ForeverDeploy.Extensions
 {
 	public static class Extensions
 	{
+		public static void LogExceptionExt(this NLog.Logger log, Exception e )
+		{
+			log.Error("Exception: HRESULT: {0} \n Message: {1} \n Trace: {2} \n Source: {3} \n Target: {4}", e.HResult, e.Message, e.StackTrace, e.Source, e.TargetSite);
+		}
+
 		//Returns a string x y ago from a datetime
 		public static string TimeDiffAgeSingleUnit(this DateTime startTime)
 		{

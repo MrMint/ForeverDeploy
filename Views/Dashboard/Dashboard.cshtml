@@ -1,5 +1,9 @@
 ﻿<div class="bodyContainer">
-    <div id="deploymentsContainer" ng-repeat="deployment in deployments" ng-animate="'my-slide-animation'" @*style="-webkit-transition-delay:{{$index * 500}}ms"*@>      
+    <div id="serverStatusContainer">
+        @Html.Partial("_ServerStatusPartial")
+    </div>
+
+    <div id="deploymentsContainer">      
         @Html.Partial("_DeploymentPartial")
     </div>
 </div>

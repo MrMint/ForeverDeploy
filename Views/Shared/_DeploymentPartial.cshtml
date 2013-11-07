@@ -1,17 +1,19 @@
-﻿<div class="deployment hideLog @*animated slideInLeft*@">
-    <div class="deployStatus bgGreen"></div>
+﻿<div class="deployment animated" ng-class="{shadow: $index==0, hideLog: showElement('deployed',$index), fadeOutDown: $index > 2}" ng-repeat="deployment in deployments">
+    <div class="deployStatus" ng-class="{bgGreen: statusBar($index)=='deployed', bgRed: statusBar($index)=='failed', bgBlue: statusBar($index)=='deploying', deployStatusActive: $index==0}"></div>
     <div class="deploymentDashboard">
         <div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>
         <div class="deploymentInfo">
 
             <div class="row">
-                <div class="deployedOn" ng-show="deployment.deploymentStatus != 12">
+                <div class="deployedOn" ng-show="showElement('deploying',$index)">
                     <i class="fa fa-cog blue fa-spin"></i><span class="activeText blue">&nbsp;&nbsp;DEPLOYING....</span>
                 </div>
-                <div class="deployedOn" ng-show="deployment.deploymentStatus == 12">
-                    <i class="fa fa-check-circle green"></i><span class="activeText green">&nbsp;&nbsp;ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;{{}}
+                <div class="deployedOn" ng-show="showElement('deployed',$index) && $index == 0">
+                    <i class="fa fa-check-circle green"></i><span class="activeText green">&nbsp;&nbsp;ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;{{deployment.dateDeployedUTCTicksUnix | date:'EEEE, MMMM d, y  h:mm a'}}
                 </div>
-
+                <div class="deployedOn" ng-show="showElement('deployed',$index) && $index != 0">
+                    {{deployment.dateDeployedUTCTicksUnix | date:'EEEE, MMMM d, y  h:mm a'}}
+                </div>
             </div>
 
             <div class="row">
@@ -20,9 +22,9 @@
 
             <div class="row">
                 <div class="deployedInfo">
-                    <div class="deployCommitId" ng-click="test()">COMMIT: <a class="commitIdLink" href="www.google.com">{{deployment.commit.rawNode}}</a></div>
-                    <div class="deployAuthor">AUTHOR: <span class="authorName">{{deployment.commit.author}}</span></div>
-                    <div class="deployBranchName">BRANCH: <span class="branchName">{{deployment.commit.branch}}</span></div>
+                    <div class="deployCommitId">COMMIT:&nbsp;&nbsp;<a class="commitIdLink" href="https://bitbucket.org/Mr_Mint/voxelscape/commits/{{deployment.commit.rawNode}}">{{deployment.commit.nodeShort}}</a></div>
+                    <div class="deployAuthor">AUTHOR:&nbsp;&nbsp;<span class="authorName">{{deployment.commit.author}}</span></div>
+                    <div class="deployBranchName">BRANCH:&nbsp;&nbsp;<span class="branchName">{{deployment.commit.branch}}</span></div>
                 </div>
             </div>
 
@@ -36,48 +38,48 @@
         <div class="expander" onclick="showHideLog($(this),$(this).parent().parent())"><i class="fa fa-chevron-up"></i></div>
     </div>
     <div class="deploymentLog">
-        <div class="rowDivider"></div>
-        <div class="logRow">
+        <div class="rowDivider" ng-show="showElement('logPreparing',$index)"></div>
+        <div class="logRow" ng-show="showElement('logPreparing',$index)">
             <div class="logIconStatus">
-                <i class="fa fa-refresh fa-spin blue fast"></i>
-                <i class="fa fa-check-circle green"></i>
-                <i class="fa fa-exclamation-circle red"></i>
+                <i class="fa fa-refresh fa-spin blue fast" ng-show="showElement('logPreparingInProgress',$index)"></i>
+                <i class="fa fa-check-circle green" ng-show="showElement('logPreparingSuccess',$index)"></i>
+                <i class="fa fa-exclamation-circle red" ng-show="showElement('logPreparingFailed',$index)"></i>
             </div>
 
-            <div class="logTime">12:14:23 PM</div>
-            <div class="logMessage">Preparing deployment for commit id '63452y2rhgf'.</div>
+            <div class="logTime">{{deployment.datePreparedUTCTicksUnix | date:'h:mm:ss a'}}</div>
+            <div class="logMessage">Preparing deployment for commit id '{{deployment.commit.nodeShort}}'.</div>
         </div>
-        <div class="rowDivider"></div>
-        <div class="logRow">
+        <div class="rowDivider" ng-show="showElement('logPreparing',$index)"></div>
+        <div class="logRow" ng-show="showElement('logUpdating',$index)">
             <div class="logIconStatus">
-                <i class="fa fa-refresh fa-spin blue fast"></i>
-                <i class="fa fa-check-circle green"></i>
-                <i class="fa fa-exclamation-circle red"></i>
+                <i class="fa fa-refresh fa-spin blue fast" ng-show="showElement('logUpdatingInProgress',$index)"></i>
+                <i class="fa fa-check-circle green" ng-show="showElement('logUpdatingSuccess',$index)"></i>
+                <i class="fa fa-exclamation-circle red" ng-show="showElement('logUpdatingFailed',$index)"></i>
             </div>
-            <div class="logTime">12:14:25 PM</div>
+            <div class="logTime">{{deployment.dateUpdatedUTCTicksUnix | date:'h:mm:ss a'}}</div>
             <div class="logMessage">Updating the repository.</div>
         </div>
-        <div class="rowDivider"></div>
-        <div class="logRow">
+        <div class="rowDivider" ng-show="showElement('logUpdating',$index)"></div>
+        <div class="logRow" ng-show="showElement('logBuilding',$index)">
             <div class="logIconStatus">
-                <i class="fa fa-refresh fa-spin blue fast"></i>
-                <i class="fa fa-check-circle green"></i>
-                <i class="fa fa-exclamation-circle red"></i>
+                <i class="fa fa-refresh fa-spin blue fast" ng-show="showElement('logBuildingInProgress',$index)"></i>
+                <i class="fa fa-check-circle green" ng-show="showElement('logBuildingSuccess',$index)"></i>
+                <i class="fa fa-exclamation-circle red" ng-show="showElement('logBuildingFailed',$index)"></i>
             </div>
-            <div class="logTime">12:13:21 PM</div>
+            <div class="logTime">{{deployment.dateBuiltUTCTicksUnix | date:'h:mm:ss a'}}</div>
             <div class="logMessage">Building the project.</div>
             <a class="logViewLog blue">View Log</a>
         </div>
-        <div class="rowDivider"></div>
-        <div class="logRow">
+        <div class="rowDivider" ng-show="showElement('logBuilding',$index)"></div>
+        <div class="logRow" ng-show="showElement('logDeploying',$index)">
             <div class="logIconStatus">
-                <i class="fa fa-refresh fa-spin blue fast"></i>
-                <i class="fa fa-check-circle green"></i>
-                <i class="fa fa-exclamation-circle red"></i>
+                <i class="fa fa-refresh fa-spin blue fast" ng-show="showElement('logDeployingInProgress',$index)"></i>
+                <i class="fa fa-check-circle green" ng-show="showElement('logDeployingSuccess',$index)"></i>
+                <i class="fa fa-exclamation-circle red" ng-show="showElement('logDeployingFailed',$index)"></i>
             </div>
-            <div class="logTime">12:16:53 PM</div>
+            <div class="logTime">{{deployment.dateDeployedUTCTicksUnix | date:'h:mm:ss a'}}</div>
             <div class="logMessage">Deployment successful.</div>
         </div>
-        <div class="rowDivider"></div>
+        <div class="rowDivider" ng-show="showElement('logDeploying',$index)"></div>
     </div>
 </div>

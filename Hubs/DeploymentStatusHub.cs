@@ -13,7 +13,7 @@ namespace ForeverDeploy.Hubs
 	{
 		public void Connect()
 		{
-			Broadcaster.Instance.UpdateClients(DeploymentManager.Instance.Deployment,Context.ConnectionId);
+			Broadcaster.Instance.SendOldDeployments(Context.ConnectionId);
 		}
 
 		public void UpdateStatus()
