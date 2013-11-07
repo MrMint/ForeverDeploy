@@ -11,6 +11,6 @@ namespace ForeverDeploy.Models
 		Checking = 0,
 		Offline = 1,
 		Starting = 2,
-		Running = 3
+		Online = 3
 	}
 }

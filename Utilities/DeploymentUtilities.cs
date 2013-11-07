@@ -96,8 +96,8 @@ namespace ForeverDeploy.Utilities
 				}
 				else
 				{
-					//If at end of file, sleep for 150ms
-					Thread.Sleep(150);
+					//If at end of file, sleep for 500ms
+					Thread.Sleep(500);
 				}
 
 				//Protect from an infinite loop due to

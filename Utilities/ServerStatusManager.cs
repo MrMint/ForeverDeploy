@@ -12,7 +12,10 @@ namespace ForeverDeploy.Utilities
 		//Singleton related variables
 		private static volatile ServerStatusManager instance;
 		private static object syncRoot = new Object();
+
+		//List of current servers
 		private List<Server> servers { get; set; }
+
 		public List<Server> Servers
 		{
 			get
@@ -21,38 +24,20 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
+		private List<ServerLogMonitor> monitors;
+
 		//Logger
 		private static Logger log = LogManager.GetCurrentClassLogger();
 
 		private ServerStatusManager()
 		{
 			//TODO: Automatically detect servers based on log files present
+			
+			//Initialize server objects
+			InitializeServers();
 
-			servers = new List<Server>();
-
-			//Add Proxy server
-			servers.Add(new Server()
-			{
-				Name = "Proxy",
-				LogFileName = "",
-				ServerStatus = ServerStatus.Checking
-			});
-
-			//Add Login server
-			servers.Add(new Server()
-			{
-				Name = "Login",
-				LogFileName = "",
-				ServerStatus = ServerStatus.Checking
-			});
-
-			//Add Game server
-			servers.Add(new Server()
-			{
-				Name = "Game",
-				LogFileName = "",
-				ServerStatus = ServerStatus.Checking
-			});
+			//Initialize server monitors
+			InitializeMonitors();
 		}
 
 		//Get singleton instance
@@ -73,6 +58,68 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
+		public void ChangeServerStatus(string ServerName, ServerStatus status)
+		{
+			
+		}
 
+		//Starts all server monitors
+		public void StartServerMonitors()
+		{
+			foreach (var monitor in monitors)
+			{
+				monitor.Start();
+			}
+		}
+
+		//Stops all server monitors
+		public void StopServerMonitors()
+		{
+			foreach (var monitor in monitors)
+			{
+				monitor.Stop();
+			}
+		}
+
+		//Helper function for initializing servers
+		private void InitializeServers()
+		{
+			servers = new List<Server>();
+
+			//Add Proxy server
+			servers.Add(new Server()
+			{
+				Name = "Proxy",
+				LogFileName = "Proxy",
+				ServerStatus = ServerStatus.Checking
+			});
+
+			//Add Login server
+			servers.Add(new Server()
+			{
+				Name = "Login",
+				LogFileName = "Login",
+				ServerStatus = ServerStatus.Checking
+			});
+
+			//Add Game server
+			servers.Add(new Server()
+			{
+				Name = "Game",
+				LogFileName = "Game",
+				ServerStatus = ServerStatus.Checking
+			});
+		}
+
+		//Helper function for initializing monitors
+		private void InitializeMonitors()
+		{
+			monitors = new List<ServerLogMonitor>();
+			
+			foreach (var server in servers)
+			{
+				monitors.Add(new ServerLogMonitor(server.Name, server.LogFileName));
+			}
+		}
 	}
 }

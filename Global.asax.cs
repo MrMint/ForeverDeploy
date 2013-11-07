@@ -23,6 +23,9 @@ namespace ForeverDeploy
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AuthConfig.RegisterAuth();
+
+			//Run application specific startup code
+			ForeverDeployStartup.StartUp();
 		}
 	}
 }

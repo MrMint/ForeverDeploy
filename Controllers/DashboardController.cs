@@ -28,7 +28,7 @@ namespace ForeverDeploy.Controllers
 		{
 			return PartialView("_DeploymentTemplatePartial");
 		}
-
+		//TODO:REMOVE, being used for testing from the live server/frontend testing
 		public JsonDotNetResult DeploymentItemTest()
 		{
 			var commit = new Commit()
