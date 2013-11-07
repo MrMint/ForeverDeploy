@@ -57,12 +57,12 @@ namespace ForeverDeploy.Hubs
 		/// <param name="connectionId">ConnectionId to send to.</param>
 		public void SendServerStatus(string connectionId)
 		{
-			deploymentStatusHubContext.Clients.Client(connectionId).updateServers(ServerStatusManager.Instance.Servers);
+			deploymentStatusHubContext.Clients.Client(connectionId).servers(ServerStatusManager.Instance.Servers);
 		}
 
 		public void UpdateClientsServerStatus(Server server)
 		{
-			deploymentStatusHubContext.Clients.All.updateServers(server);
+			deploymentStatusHubContext.Clients.All.updateServer(server);
 		}
 	}
 }

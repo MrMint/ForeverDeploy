@@ -2,10 +2,6 @@
     $scope.pageTitle = "Dashboard";
     $scope.deployments = [];
     $scope.servers = [];
-    $scope.servers.push({})
-    $scope.proxyServerStatus = "Connecting..."
-    $scope.gameServerStatus = "Connecting..."
-    $scope.loginServerStatus = "Connecting..."
 
     //If connected, load the dashboard
     if ($scope.connected) {
@@ -56,6 +52,22 @@
         $scope.deployments = deployments;
     });
 
+    //Handle the servers received event
+    $scope.$on("SERVERS_RECEIVED", function (event, servers) {
+        $scope.servers = servers;
+    });
+
+    //Handle the server status update event
+    $scope.$on("SERVER_STATUS_UPDATE", function (event, server) {
+        
+        //Search through current servers for the updated server
+        $.each($scope.servers, function (index, value) {
+            if (value.name == server.name) {
+                value = server;
+            }
+        });
+    });
+    
     //Helper function for determining dom elements visibility
     $scope.showElement = function (name, index) {
         return showElement(name, $scope.deployments[index].deploymentStatus);
