@@ -10,9 +10,10 @@ namespace ForeverDeploy.Models
 		//Name of the server
 		public string Name { get; set; }
 
-		//Path to servers logs
-		public string PathToLogs { get; set; }
+		//Servers log
+		public string LogFileName { get; set; }
 
-		//
+		//Servers status
+		public ServerStatus ServerStatus { get; set; }
 	}
 }

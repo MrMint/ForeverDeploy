@@ -8,8 +8,9 @@ namespace ForeverDeploy.Models
 	//Enum representing a servers current status
 	public enum ServerStatus : byte
 	{
-		Offline = 0,
-		Starting = 1,
-		Running = 2
+		Checking = 0,
+		Offline = 1,
+		Starting = 2,
+		Running = 3
 	}
 }
