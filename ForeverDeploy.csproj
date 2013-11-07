@@ -250,6 +250,8 @@
     <Compile Include="Models\Deployment.cs" />
     <Compile Include="Models\DeploymentStatus.cs" />
     <Compile Include="Models\FDContext.cs" />
+    <Compile Include="Models\Server.cs" />
+    <Compile Include="Models\ServerStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DeploymentManager.cs" />
     <Compile Include="Utilities\DeploymentUtilities.cs" />

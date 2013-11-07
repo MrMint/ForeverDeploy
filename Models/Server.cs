@@ -12,5 +12,7 @@ namespace ForeverDeploy.Models
 
 		//Path to servers logs
 		public string PathToLogs { get; set; }
+
+		//
 	}
 }

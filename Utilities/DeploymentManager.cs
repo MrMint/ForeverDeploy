@@ -147,6 +147,7 @@ namespace ForeverDeploy.Utilities
 
 					try
 					{
+						//Debug stuff for running tests
 						//updated = true;
 						//Thread.Sleep(2000);
 
@@ -156,10 +157,16 @@ namespace ForeverDeploy.Utilities
 					
 
 					}
+					//Catch any exceptions thrown while utilizing GIT
 					catch (Exception e)
 					{
+						//Log
 						log.Error("GIT: Failed to update due to exception.");
+						
+						//Log exception using extension method
 						log.LogExceptionExt(e);
+						
+						//Set date and status
 						deployment.DateUpdatedUTC = DateTime.UtcNow;
 						DeploymentStatus = DeploymentStatus.UpdatingRepoFailed;
 						failed = true;
@@ -174,21 +181,29 @@ namespace ForeverDeploy.Utilities
 							log.Debug("BUILD: Compiling");
 							DeploymentStatus = DeploymentStatus.Building;
 							
+							//Debug stuff for running tests
 							//Thread.Sleep(3000);
 							//compiled = true;
 
 							compiled = DeploymentUtilities.Build(deployment);
 							deployment.DateBuiltUTC = DateTime.UtcNow;
 						}
+						//Catch any exceptions thrown while building
 						catch (Exception e)
 						{
+							//Log
 							log.Error("BUILD: Failed to build due to exception.");
+							
+							//Log exception using extension method
 							log.LogExceptionExt(e);
+
+							//Set date and status
 							deployment.DateBuiltUTC = DateTime.UtcNow;
 							DeploymentStatus = DeploymentStatus.BuildingFailed;
 							failed = true;
 						}
 
+						//Successfully built and had no failures 
 						if (compiled && !failed)
 						{
 							log.Debug("BUILD: Successfully compiled");
@@ -196,6 +211,7 @@ namespace ForeverDeploy.Utilities
 							DeploymentStatus = DeploymentStatus.Deployed;
 
 						}
+						//Did not build
 						else if (!compiled)
 						{
 							log.Error("BUILD: Failed to due to errors.");

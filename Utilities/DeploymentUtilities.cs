@@ -100,7 +100,8 @@ namespace ForeverDeploy.Utilities
 					Thread.Sleep(150);
 				}
 
-				//Protect from an infinite loop
+				//Protect from an infinite loop due to
+				//Erroneous log file, etc
 				if (infiniteLoopProtector > 25000)
 				{
 					done = true;
