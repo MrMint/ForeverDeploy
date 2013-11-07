@@ -1,0 +1,7 @@
+﻿<div class="serverStatusDashboard">
+    <div class="serverStatusContainer" ng-repeat="server in servers">
+        <div class="serverStatusBar" ng-class="{bgGreen: server.serverStatus == 'running', bgRed: server.serverStatus == 'stopped', bgBlue: server.serverStatus == 'starting'}"></div>
+        <div class="serverName">{{server.serverName}}</div>
+        <div class="serverStatus">{{server.serverStatus}}</div>
+    </div>
+</div>
