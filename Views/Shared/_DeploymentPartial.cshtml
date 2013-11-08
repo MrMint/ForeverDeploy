@@ -1,4 +1,4 @@
-﻿<div class="deployment animated" ng-class="{shadow: $index==0, hideLog: showElement('deployed',$index), fadeOutDown: $index > 2}" ng-repeat="deployment in deployments">
+﻿<div class="deployment animated" ng-class="{shadow: $index==0, hideLog: $index != 0, fadeOutDown: $index > 2}" ng-repeat="deployment in deployments">
     <div class="deployStatus" ng-class="{bgGreen: statusBar($index)=='deployed', bgRed: statusBar($index)=='failed', bgBlue: statusBar($index)=='deploying', deployStatusActive: $index==0}"></div>
     <div class="deploymentDashboard">
         <div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>
@@ -68,7 +68,7 @@
             </div>
             <div class="logTime">{{deployment.dateBuiltUTCTicksUnix | date:'h:mm:ss a'}}</div>
             <div class="logMessage">Building the project.</div>
-            <a class="logViewLog blue">View Log</a>
+            <div class="logViewLog blue" ng-click="viewLog('{{deployment.commit.rawNode}}')">View Log</div>
         </div>
         <div class="rowDivider" ng-show="showElement('logBuilding',$index)"></div>
         <div class="logRow" ng-show="showElement('logDeploying',$index)">

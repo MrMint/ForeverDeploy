@@ -1,13 +1,41 @@
-﻿function DashboardCtrl($scope) {
+﻿function DashboardCtrl($scope, $http, $sce) {
     $scope.pageTitle = "Dashboard";
     $scope.deployments = [];
     $scope.servers = [];
+    $scope.logData;
+    $scope.logLoading = false;
+    $scope.showLog = false;
 
     //If connected, load the dashboard
     if ($scope.connected) {
         deploymentStatusHub.server.connect();
     }
 
+    //Function that retrieves the specified log from the server, and displays it
+    $scope.viewLog = function (node) {
+        $scope.logData = "";
+        $scope.showLog = true;
+        $scope.logLoading = true;
+        $http({
+            method: "GET", url: "http://foreverdeploy.jaredprather.com//Dashboard/BuildLog/" + node
+        }).
+           success(function (data, status, headers, config) {
+               //Success
+               $scope.logData = $sce.trustAsHtml(data);
+               $scope.logLoading = false;
+           }).
+           error(function (data, status, headers, config) {
+               //Log retrieval failed
+               $scope.logLoading = false;
+               $scope.logData = "Failed to retrieve build log.";
+           });
+    }
+
+    $scope.hideLog = function () {
+        $scope.showLog = false;
+        $scope.logLoading = false;
+
+    }
     //Handle the deployment status update event 
     $scope.$on("DEPLOYMENT_STATUS_UPDATE", function (event, deployment) {
         var found = false;
@@ -95,4 +123,4 @@
     }
 }
 
-DashboardCtrl.$inject = ['$scope']
+DashboardCtrl.$inject = ['$scope', '$http', '$sce']

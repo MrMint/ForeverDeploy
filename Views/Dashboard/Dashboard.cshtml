@@ -6,4 +6,20 @@
     <div id="deploymentsContainer">
         @Html.Partial("_DeploymentPartial")
     </div>
+    <div id="dimmer" ng-class="{show: showLog}"></div>
+    <div id="logDisplay" ng-class="{show: showLog}" >
+            <div class="loading logLoading" ng-class="{show: logLoading}">
+                <h2>Loading</h2>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        <div ng-bind-html="logData"></div>
+    </div>
+
+    <div id="logClose" ng-class="{show: showLog}" ng-click="hideLog()"><i class="fa fa-times red"></i>close</div>
 </div>

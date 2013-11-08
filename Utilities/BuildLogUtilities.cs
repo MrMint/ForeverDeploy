@@ -15,7 +15,9 @@ namespace ForeverDeploy.Utilities
 			FileStream logFileStream = new FileStream(String.Format("D:/ForeverDeploy/logs/build/{0}.txt", fileName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			StreamReader logFileReader = new StreamReader(logFileStream);
 			var log = logFileReader.ReadToEnd();
+			log = log.Replace(" ", "&nbsp;");
 			log = log.Replace(System.Environment.NewLine, "<br />");
+			
 			return log;
 		}
 	}

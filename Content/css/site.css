@@ -39,7 +39,6 @@ footer {
     margin-bottom: 50px;
     width: 100%;
     float: left;
-    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.39);
 }
 
     .nav .brand {
@@ -77,15 +76,17 @@ footer {
         .nav .navLink a:hover {
             color: #fff;
         }
+
 .brandLogo {
-    position:absolute;
-    top:-35px;
-    left:30px;
-    fill:#5FC2AF !important;
-    width:170px;
-    opacity:.1;
-    z-index:1;
+    position: absolute;
+    top: -35px;
+    left: 30px;
+    fill: #5FC2AF !important;
+    width: 170px;
+    opacity: .1;
+    z-index: 1;
 }
+
 .bodyContainer {
     width: 800px;
     margin: auto;
@@ -95,12 +96,67 @@ footer {
     width: 100%;
 }
 
-.logDisplay {
-white-space: pre-wrap;
+#logDisplay {
+    /*white-space: pre-wrap;*/
+    position: fixed;
+    top: 10px;
+    height: calc(100% - 20px);
+    width: 70%;
+    left: 15%;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.39);
+    opacity: 0;
+    display: none;
+    overflow: scroll;
 }
 
+    #logDisplay.show {
+        opacity: 1;
+        display: inherit;
+    }
 
+#dimmer {
+    /*white-space: pre-wrap;*/
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.68);
+    opacity: 0;
+    display: none;
+}
 
+    #dimmer.show {
+        opacity: 1;
+        display: inherit;
+    }
+
+#logClose {
+    position: absolute;
+    top: 10px;
+    left: 85.2%;
+    background-color: #fff;
+    opacity: 0;
+    display: none;
+    background-color: #F0F0F0;
+    padding: 5px;
+}
+
+    #logClose.show {
+        opacity: 1;
+        display: inherit;
+    }
+.loading.logLoading {
+padding-top:40%;
+opacity:0;
+display:none;
+z-index:10;
+}
+    .loading.logLoading.show {
+        opacity: 1;
+        display: inherit;
+    }
 .blue {
     font-size: 18px;
     color: #5FC1F5;
@@ -130,6 +186,7 @@ white-space: pre-wrap;
     font-size: 18px;
     color: #408275;
 }
+
 .bgBlue {
     background-color: #5FC1F5;
 }
@@ -153,13 +210,13 @@ white-space: pre-wrap;
 .bgGreen {
     background-color: #408275;
 }
+
 .hidden {
     display: none;
 }
 
 .testButton {
-    position:fixed;
-    top:50px;
-    right:10px;
-
+    position: fixed;
+    top: 50px;
+    right: 10px;
 }
