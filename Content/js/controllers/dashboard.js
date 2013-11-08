@@ -49,6 +49,7 @@
 
     //Handle the old deployments received event
     $scope.$on("OLD_DEPLOYMENTS_RECEIVED", function (event, deployments) {
+        $scope.$emit("LOADING", false);
         $scope.deployments = deployments;
     });
 
@@ -63,7 +64,7 @@
         //Search through current servers for the updated server
         $.each($scope.servers, function (index, value) {
             if (value.name == server.name) {
-                value = server;
+                $scope.servers[index] = server;
             }
         });
     });

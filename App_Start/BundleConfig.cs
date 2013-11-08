@@ -43,7 +43,8 @@ namespace ForeverDeploy
 				"~/Content/css/loadingSpinner.css",
 				"~/Content/css/percentSpinner.css",
 				"~/Content/css/deployment.css",
-				"~/Content/vendor/animate/css/animate.css"
+				"~/Content/vendor/animate/css/animate.css",
+				"~/Content/css/connecting.css"
 				));
 
 			bundles.Add(new StyleBundle("~/Content/vendor/fontawesome/virtual/icons").Include(

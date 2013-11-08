@@ -195,6 +195,11 @@
 }
 
 /* SERVER STATUS*/
+#serverStatusContainer {
+    position:relative;
+    float:left;
+    width:100%;
+}
 .serverStatusDashboard {
     display: -webkit-flexbox;
     display: -ms-flexbox;

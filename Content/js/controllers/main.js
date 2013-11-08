@@ -1,8 +1,12 @@
 ﻿function MainCtrl($scope) {
     $scope.connected = false;
-    
+    $scope.loading = true;
     $scope.$on("WEBSOCKETS_CONNECTED", function (event) {
         $scope.connected = true;
+    });
+
+    $scope.$on("LOADING", function (event, value) {
+        $scope.loading = value;
     });
 
 
