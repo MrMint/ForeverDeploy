@@ -95,6 +95,12 @@ footer {
     width: 100%;
 }
 
+.logDisplay {
+white-space: pre-wrap;
+}
+
+
+
 .blue {
     font-size: 18px;
     color: #5FC1F5;

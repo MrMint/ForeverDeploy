@@ -33,7 +33,7 @@ namespace ForeverDeploy
 				"~/Content/js/foreverDeploy.js",
 				"~/Content/js/controllers/dashboard.js",
 				"~/Content/js/controllers/main.js",
-				"~/Content/js/controllers/history.js",
+				"~/Content/js/controllers/getStarted.js",
 				"~/Content/js/helpers.js",
 				"~/Content/js/webSockets.js"
 				));

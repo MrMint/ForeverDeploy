@@ -258,6 +258,7 @@
     <Compile Include="Utilities\DeploymentUtilities.cs" />
     <Compile Include="Utilities\GitUtilities.cs" />
     <Compile Include="Utilities\PrivateKeyConfigSessionFactory.cs" />
+    <Compile Include="Utilities\BuildLogUtilities.cs" />
     <Compile Include="Utilities\ServerLogMonitor.cs" />
     <Compile Include="Utilities\ServerStatusManager.cs" />
   </ItemGroup>
@@ -269,7 +270,7 @@
     <Content Include="Content\css\site.css" />
     <Content Include="Content\img\infinity-single-black.svg" />
     <Content Include="Content\js\controllers\dashboard.js" />
-    <Content Include="Content\js\controllers\history.js" />
+    <Content Include="Content\js\controllers\getStarted.js" />
     <Content Include="Content\js\controllers\main.js" />
     <Content Include="Content\js\deployment.js" />
     <Content Include="Content\js\foreverDeploy.js" />

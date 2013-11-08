@@ -1,5 +1,6 @@
 ﻿using ForeverDeploy.Extensions;
 using ForeverDeploy.Models;
+using ForeverDeploy.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,10 @@ namespace ForeverDeploy.Controllers
 			return PartialView("_DeploymentTemplatePartial");
 		}
 
-		public 
+		public string BuildLog(string Id)
+		{
+			return BuildLogUtilities.GetBuildLog(Id);
+		}
 
 		//TODO:REMOVE, being used for testing from the live server/frontend testing
 		public JsonDotNetResult DeploymentItemTest()
