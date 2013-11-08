@@ -9,6 +9,12 @@ var foreverDeploy = angular.module('foreverDeploy', ['ngRoute'])
               controller: DashboardCtrl
           });
 
+          //configure custom routing
+          $routeProvider.when('/GetStarted', {
+              templateUrl: '/GetStarted/GetStarted',
+              controller: GetStartedCtrl
+          });
+
           $routeProvider.otherwise({
               redirectTo: '/Dashboard'
           });

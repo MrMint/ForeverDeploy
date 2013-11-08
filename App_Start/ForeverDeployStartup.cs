@@ -11,7 +11,7 @@ namespace ForeverDeploy
 		public static void StartUp()
 		{
 			//Start server monitors
-			//ServerStatusManager.Instance.StartServerMonitors();
+			ServerStatusManager.Instance.StartServerMonitors();
 		}
 	}
 }

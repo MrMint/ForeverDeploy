@@ -19,15 +19,21 @@ namespace ForeverDeploy.Controllers
 			return View();
 		}
 
+		//
+		// GET: /Dashboard/Dashboard
 		public ActionResult Dashboard()
 		{
 			return PartialView("Dashboard");
 		}
-
+		//
+		// GET: /Dashboard/DeploymentTemplate
 		public ActionResult DeploymentTemplate()
 		{
 			return PartialView("_DeploymentTemplatePartial");
 		}
+
+		public 
+
 		//TODO:REMOVE, being used for testing from the live server/frontend testing
 		public JsonDotNetResult DeploymentItemTest()
 		{
