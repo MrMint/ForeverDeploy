@@ -8,6 +8,9 @@ using System.Web;
 
 namespace ForeverDeploy.Hubs
 {
+	/// <summary>
+	/// The websocket hub used by the clients
+	/// </summary>
 	[HubName("deploymentStatusHub")]
 	public class DeploymentStatusHub : Hub
 	{
@@ -15,11 +18,6 @@ namespace ForeverDeploy.Hubs
 		{
 			Broadcaster.Instance.SendOldDeployments(Context.ConnectionId);
 			Broadcaster.Instance.SendServerStatus(Context.ConnectionId);
-		}
-
-		public void UpdateStatus()
-		{
-
 		}
 	}
 }

@@ -233,11 +233,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\GetStartedController.cs" />
     <Compile Include="Controllers\GitHooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Extensions\JsonDotNetResult.cs" />
-    <Compile Include="Extensions\MustBeAJAX.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -397,15 +397,13 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Dashboard\DashboardTemplate.cshtml" />
     <Content Include="Views\Shared\_DeploymentTemplatePartial.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\Dashboard.cshtml" />
-    <Content Include="Views\Shared\_DeploymentPartial.cshtml" />
-    <Content Include="Views\Shared\_ServerStatusPartial.cshtml" />
+    <Content Include="Views\Shared\_ServerStatusTemplatePartial.cshtml" />
+    <Content Include="Views\GetStarted\GetStarted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

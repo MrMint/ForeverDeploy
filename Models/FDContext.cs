@@ -7,6 +7,9 @@ using System.Web;
 
 namespace ForeverDeploy.Models
 {
+	/// <summary>
+	/// The EF context that represents the database
+	/// </summary>
 	public class FDContext : DbContext
 	{
 		public FDContext()

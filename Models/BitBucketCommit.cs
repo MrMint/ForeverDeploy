@@ -8,6 +8,7 @@ using ForeverDeploy.Extensions;
 
 namespace ForeverDeploy.Models
 {
+	//These classes represent the json payload delivered via bitbucket
 	public class Commit
 	{
 		public string node { get; set; }

@@ -1,6 +1,7 @@
 ﻿function MainCtrl($scope) {
     $scope.connected = false;
     $scope.loading = true;
+    $scope.pageTitle = "Connecting";
     $scope.$on("WEBSOCKETS_CONNECTED", function (event) {
         $scope.connected = true;
     });

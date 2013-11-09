@@ -17,55 +17,24 @@ namespace ForeverDeploy.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			return View("Layout");
 		}
 
 		//
 		// GET: /Dashboard/Dashboard
+
 		public ActionResult Dashboard()
 		{
-			return PartialView("Dashboard");
+			return PartialView("DashboardTemplate");
 		}
+
 		//
-		// GET: /Dashboard/DeploymentTemplate
-		public ActionResult DeploymentTemplate()
-		{
-			return PartialView("_DeploymentTemplatePartial");
-		}
+		// GET: /Dashboard/BuildLog
 
 		public string BuildLog(string Id)
 		{
+			//Return request buildlog with proper formatting
 			return BuildLogUtilities.GetBuildLog(Id);
-		}
-
-		//TODO:REMOVE, being used for testing from the live server/frontend testing
-		public JsonDotNetResult DeploymentItemTest()
-		{
-			var commit = new Commit()
-			{
-				author = "Mr_Mint",
-				branch = "master",
-				message = "This is a message",
-				raw_author = "Jared Prather <pratherjared@gmail.com>",
-				raw_node = "134u56h134i6ub134i56u3b",
-				utctimestamp = DateTime.UtcNow.ToString()
-			};
-
-			return new JsonDotNetResult(new List<Deployment>()
-			{
-				new Deployment()
-			{
-				Commit = new DeployedCommit()
-				{
-					Author = "Jared Prather",
-					Branch = "master",
-					UtcTimeStamp = DateTime.UtcNow.ToString(),
-					Message = "Testing new deployment methods"
-				},
-				DeploymentStatus = DeploymentStatus.POSTReceived,
-				PercentComplete = 55
-			}
-			});
 		}
 	}
 }

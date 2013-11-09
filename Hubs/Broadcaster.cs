@@ -8,6 +8,9 @@ using System.Web;
 
 namespace ForeverDeploy.Hubs
 {
+	/// <summary>
+	/// The singleton that manages broadcasting websocket messages to clients
+	/// </summary>
 	public class Broadcaster
 	{
 		private readonly static Lazy<Broadcaster> instance = new Lazy<Broadcaster>(() => new Broadcaster());
