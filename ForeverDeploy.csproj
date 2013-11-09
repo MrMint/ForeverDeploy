@@ -340,7 +340,6 @@
     <Content Include="Content\vendor\fontawesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\fontawesome\fonts\fontawesome-webfont.svg" />
     <Content Include="favicon.ico" />
-    <Content Include="ForeverDeploy.config" />
     <Content Include="Global.asax" />
     <Content Include="Content\vendor\fontawesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\vendor\fontawesome\fonts\fontawesome-webfont.ttf" />
@@ -406,6 +405,7 @@
     <Content Include="Views\Shared\_DeploymentTemplatePartial.cshtml" />
     <Content Include="Views\Shared\_ServerStatusTemplatePartial.cshtml" />
     <Content Include="Views\GetStarted\GetStarted.cshtml" />
+    <Content Include="Voxelscape.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
