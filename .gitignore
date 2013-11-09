@@ -3,6 +3,7 @@
 
 #Publish profile
 Properties/PublishProfiles/*
+Voxelscape.config
 
 # User-specific files
 *.suo
