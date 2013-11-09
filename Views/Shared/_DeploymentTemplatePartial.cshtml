@@ -11,7 +11,9 @@
                 <div class="deployedOn" ng-show="showElement('deployed',$index) && $index == 0">
                     <i class="fa fa-check-circle green"></i><span class="activeText green">&nbsp;&nbsp;ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;{{deployment.dateDeployedUTCTicksUnix | date:'EEEE, MMMM d, y  h:mm a'}}
                 </div>
-                <div class="deployedOn" ng-show="showElement('deployed',$index) && $index != 0">
+                <div class="deployedOn" ng-show="$index != 0 && ( statusBar($index)=='deployed' || statusBar($index)=='failed')" >
+                    <i class="fa fa-check-circle green" ng-show="statusBar($index)=='deployed'"></i>
+                    <i class="fa fa-exclamation-circle red" ng-show="statusBar($index)=='failed'"></i>
                     {{deployment.dateDeployedUTCTicksUnix | date:'EEEE, MMMM d, y  h:mm a'}}
                 </div>
             </div>

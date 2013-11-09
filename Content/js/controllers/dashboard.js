@@ -1,5 +1,5 @@
 ﻿function DashboardCtrl($scope, $http, $sce) {
-    $scope.pageTitle = "Dashboard";
+    $scope.$parent.pageTitle = "Dashboard";
     $scope.deployments = [];
     $scope.servers = [];
     $scope.logData;

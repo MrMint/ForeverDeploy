@@ -16,15 +16,12 @@ namespace ForeverDeploy.Utilities
 	public class GitUtilities
 	{
 		private static Logger log = LogManager.GetCurrentClassLogger();
-		//TODO: Not thread safe homies
+
 		private static List<string> deploymentKeywords = new List<string>()
 		{
 			"#yolo",
 			"#deploy"
 		};
-
-		private static string localRepositoryPath = @"D:\ForeverDeploy\voxelscape";
-		private static string remoteRepositoryURI = "git@bitbucket.org:Mr_Mint/voxelscape.git";
 
 		//Public property for deployment keywords
 		public static List<string> DeploymentKeywords
@@ -78,20 +75,19 @@ namespace ForeverDeploy.Utilities
 				log.Debug("Setting up GIT ssh");
 				// Use our custom SSH session when accessing remote SSH:// repositories
 				// The username must be in the repository Uri: ssh://git@host/var/git/repo.git
-				var privateKeyPath = @"C:\Users\Administrator\.ssh\id_rsa";
-				var factory = new PrivateKeyConfigSessionFactory(privateKeyPath);
+				var factory = new PrivateKeyConfigSessionFactory(FDConfig.Instance.PrivateKeyPath);
 				SshSessionFactory.SetInstance(factory);
 
 				//Open the repository
 				log.Debug("Opening the local repo");
-				var repository = Git.Open(localRepositoryPath);
+				var repository = Git.Open(FDConfig.Instance.LocalRepositoryPath);
 
 				//Get the list of local branches
 				log.Debug("Getting list of local branches");
 				var refList = repository.BranchList().SetListMode(ListBranchCommand.ListMode.HEAD).Call();
 
 				DeploymentManager.Instance.DeploymentStatus = DeploymentStatus.UpdatingRepo;
-				using (var streamWriter = new StreamWriter("D:/ForeverDeploy/logs/git/PullLog.txt"))
+				using (var streamWriter = new StreamWriter(FDConfig.Instance.GitLogPath))
 				{
 					var tPM = new TextProgressMonitor(streamWriter);
 
@@ -142,6 +138,7 @@ namespace ForeverDeploy.Utilities
 							.SetCreateBranch(true)
 							.SetName(commit.Branch)
 							.Call();
+
 						//Pull new changes
 						log.Debug("Pulling new changes");
 						var result = repository.Pull()

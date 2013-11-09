@@ -21,15 +21,13 @@ namespace ForeverDeploy.Utilities
 			var logName = deployment.Commit.RawNode;
 
 			// Fix to the path of your msbuild
-			var pathToMsBuild = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild.exe";
-			var pathToSolution = @"D:\ForeverDeploy\voxelscape\Voxelscape.sln";
-			var logger = String.Format("/fl1 /flp1:FileLogger,Microsoft.Build.Engine;logfile=D:/ForeverDeploy/logs/build/{0}.txt;verbosity=normal;append=false;encoding=utf-8;performancesummary", logName);
+			var logger = String.Format("/fl1 /flp1:FileLogger,Microsoft.Build.Engine;logfile={0}{1}.log;verbosity=normal;append=false;encoding=utf-8;performancesummary", FDConfig.Instance.BuildLogsPath, logName);
 
 			//Create and setup process
 			var builder = new Process();
-			builder.StartInfo.WorkingDirectory = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319";
-			builder.StartInfo.FileName = "MSBuild.exe";
-			builder.StartInfo.Arguments = " " + pathToSolution + " " + logger;
+			builder.StartInfo.WorkingDirectory = FDConfig.Instance.BuilderWorkingDirectory;
+			builder.StartInfo.FileName = FDConfig.Instance.Builder;
+			builder.StartInfo.Arguments = " " + FDConfig.Instance.BuildTargetPath + " " + logger;
 
 			//Start process
 			builder.Start();
@@ -37,15 +35,14 @@ namespace ForeverDeploy.Utilities
 			Thread.Sleep(1000);
 
 			//Open build logs
-			FileStream logFileStream = new FileStream(String.Format("D:/ForeverDeploy/logs/build/{0}.txt", logName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			FileStream logFileStream = new FileStream(String.Format("{0}{1}.log", FDConfig.Instance.BuildLogsPath, logName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			StreamReader logFileReader = new StreamReader(logFileStream);
 
-			
+
 			bool done = false;
-			var complete = false;
 			var built = false;
 			var infiniteLoopProtector = 0;
-			
+
 			//Monitor compile progress
 			while (!done)
 			{

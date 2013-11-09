@@ -13,8 +13,8 @@ namespace ForeverDeploy.Models
 		public string Name { get; set; }
 
 		//Servers log
-		[JsonProperty("logFileName")]
-		public string LogFileName { get; set; }
+		[JsonIgnore]
+		public string LogFilePath { get; set; }
 
 		//Servers status
 		[JsonProperty("serverStatus")]

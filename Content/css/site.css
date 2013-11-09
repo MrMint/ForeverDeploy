@@ -108,6 +108,7 @@ footer {
     opacity: 0;
     display: none;
     overflow: scroll;
+    font-size: 12px;
 }
 
     #logDisplay.show {

@@ -38,16 +38,16 @@ namespace ForeverDeploy.Utilities
 		}
 
 		//Servers log file name
-		private string logFileName;
-		public string LogFileName
+		private string logFilePath;
+		public string LogFilePath
 		{
-			get { return logFileName; }
+			get { return logFilePath; }
 		}
 
-		public ServerLogMonitor(string serverName, string logFileName)
+		public ServerLogMonitor(string serverName, string logFilePath)
 		{
 			this.serverName = serverName;
-			this.logFileName = logFileName;
+			this.logFilePath = logFilePath;
 		}
 
 		public void Start()
@@ -55,7 +55,7 @@ namespace ForeverDeploy.Utilities
 			if (!isMonitoring)
 			{
 				//Open logs
-				logFileStream = new FileStream(String.Format("D:/ForeverDeploy/voxelscape/VoxelscapeServer/PhotonServer/log/{0}.log", logFileName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+				logFileStream = new FileStream(logFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 				logFileReader = new StreamReader(logFileStream);
 
 				//Set monitoring status

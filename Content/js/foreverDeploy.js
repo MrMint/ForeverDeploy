@@ -1,20 +1,22 @@
-﻿//Initializes the ArrowAlert application
+﻿//Initializes the foreverDeploy application
 var foreverDeploy = angular.module('foreverDeploy', ['ngRoute'])
 .config(['$routeProvider',
       '$locationProvider', function ($routeProvider, $locationProvider) {
 
           //configure custom routing
+          //Dashboard
           $routeProvider.when('/Dashboard', {
               templateUrl: '/Dashboard/Dashboard',
               controller: DashboardCtrl
           });
 
-          //configure custom routing
+          //GetStarted
           $routeProvider.when('/GetStarted', {
               templateUrl: '/GetStarted/GetStarted',
               controller: GetStartedCtrl
           });
 
+          //Reroute bad request to Dashboard
           $routeProvider.otherwise({
               redirectTo: '/Dashboard'
           });

@@ -8,14 +8,14 @@ using System.Web;
 
 namespace ForeverDeploy.Utilities
 {
-	public class ServerStatusManager
+	public sealed class ServerStatusManager
 	{
 		//Singleton related variables
 		private static volatile ServerStatusManager instance;
 		private static object syncRoot = new Object();
 
 		//List of current servers
-		private List<Server> servers { get; set; }
+		private List<Server> servers = new List<Server>();
 
 		public List<Server> Servers
 		{
@@ -25,23 +25,16 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
-		private List<ServerLogMonitor> monitors;
+		private List<ServerLogMonitor> monitors = new List<ServerLogMonitor>();
 
 		//Logger
 		private static Logger log = LogManager.GetCurrentClassLogger();
 
-		private ServerStatusManager()
-		{
-			//TODO: Automatically detect servers based on log files present
-			
-			//Initialize server objects
-			InitializeServers();
+		private ServerStatusManager() { }
 
-			//Initialize server monitors
-			InitializeMonitors();
-		}
-
-		//Get singleton instance
+		/// <summary>
+		/// Get singleton instance
+		/// </summary>
 		public static ServerStatusManager Instance
 		{
 			get
@@ -75,11 +68,13 @@ namespace ForeverDeploy.Utilities
 			}
 			else
 			{
-				log.Error("ServerStatus: Unable to find requested server {0}, to update with status {1}",serverName,status);
+				log.Error("ServerStatus: Unable to find requested server {0}, to update with status {1}", serverName, status);
 			}
 		}
 
-		//Starts all server monitors
+		/// <summary>
+		/// Starts all server monitors
+		/// </summary>
 		public void StartServerMonitors()
 		{
 			foreach (var monitor in monitors)
@@ -88,7 +83,9 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
-		//Stops all server monitors
+		/// <summary>
+		/// Stops all server monitors
+		/// </summary>
 		public void StopServerMonitors()
 		{
 			foreach (var monitor in monitors)
@@ -97,45 +94,23 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
-		//Helper function for initializing servers
-		private void InitializeServers()
+		/// <summary>
+		/// Adds a server to the list of servers
+		/// </summary>
+		/// <param name="server">Server to be added.</param>
+		public void AddServer(Server server)
 		{
-			servers = new List<Server>();
-
-			//Add Proxy server
-			servers.Add(new Server()
-			{
-				Name = "Proxy",
-				LogFileName = "Proxy",
-				ServerStatus = ServerStatus.Checking
-			});
-
-			//Add Login server
-			servers.Add(new Server()
-			{
-				Name = "Login",
-				LogFileName = "Login",
-				ServerStatus = ServerStatus.Checking
-			});
-
-			//Add Game server
-			servers.Add(new Server()
-			{
-				Name = "Game",
-				LogFileName = "Game",
-				ServerStatus = ServerStatus.Checking
-			});
+			servers.Add(server);
+			InitializeMonitor(server);
 		}
 
-		//Helper function for initializing monitors
-		private void InitializeMonitors()
+		/// <summary>
+		/// Helper function for initializing a monitor for a given server
+		/// </summary>
+		/// <param name="server">Server to monitor.</param>
+		private void InitializeMonitor(Server server)
 		{
-			monitors = new List<ServerLogMonitor>();
-			
-			foreach (var server in servers)
-			{
-				monitors.Add(new ServerLogMonitor(server.Name, server.LogFileName));
-			}
+			monitors.Add(new ServerLogMonitor(server.Name, server.LogFilePath));
 		}
 	}
 }

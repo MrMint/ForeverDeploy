@@ -12,7 +12,7 @@ namespace ForeverDeploy.Utilities
 		{
 
 			//Open build logs
-			FileStream logFileStream = new FileStream(String.Format("D:/ForeverDeploy/logs/build/{0}.txt", fileName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			FileStream logFileStream = new FileStream(String.Format("D:/ForeverDeploy/logs/build/{0}.log", fileName), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			StreamReader logFileReader = new StreamReader(logFileStream);
 			var log = logFileReader.ReadToEnd();
 			log = log.Replace(" ", "&nbsp;");

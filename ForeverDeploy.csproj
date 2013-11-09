@@ -256,6 +256,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DeploymentManager.cs" />
     <Compile Include="Utilities\DeploymentUtilities.cs" />
+    <Compile Include="Utilities\FDConfig.cs" />
     <Compile Include="Utilities\GitUtilities.cs" />
     <Compile Include="Utilities\PrivateKeyConfigSessionFactory.cs" />
     <Compile Include="Utilities\BuildLogUtilities.cs" />
@@ -339,6 +340,7 @@
     <Content Include="Content\vendor\fontawesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\fontawesome\fonts\fontawesome-webfont.svg" />
     <Content Include="favicon.ico" />
+    <Content Include="ForeverDeploy.config" />
     <Content Include="Global.asax" />
     <Content Include="Content\vendor\fontawesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\vendor\fontawesome\fonts\fontawesome-webfont.ttf" />
