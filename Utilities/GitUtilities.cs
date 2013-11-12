@@ -46,12 +46,15 @@ namespace ForeverDeploy.Utilities
 			log.Debug("Processing {0} commits", commits.Count);
 			//Parse commits looking for a commit on master or one with deployment keyword
 			return commits.Where(x =>
-
+				
+				//Ensure that the commit has a branch (deal with merge child commits that have #deploy)
+				!String.IsNullOrWhiteSpace(x.branch) &&
+				
 				//Get commits that are from master branch
-				String.Equals(x.branch, "master") ||
+				(String.Equals(x.branch, "master") ||
 
 				//Get commits that contain a deployment keyword
-				deploymentKeywords.Any<string>(s => Regex.Match(x.message, s, RegexOptions.IgnoreCase).Success))
+				deploymentKeywords.Any<string>(s => Regex.Match(x.message, s, RegexOptions.IgnoreCase).Success)))
 
 				//Order those by most recent
 				.OrderByDescending(x => x.utctimestamp)
