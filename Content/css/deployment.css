@@ -47,7 +47,6 @@
 
 .deploymentIcon {
     width: 90px;
-    background-color: #5FC1F5;
     text-align: center;
     float: left;
 }
@@ -59,7 +58,9 @@
         line-height: 90px;
         color: #fff;
     }
-
+        .deploymentIcon img {
+            width:100%;
+    }
 
 .deploymentInfo {
     margin-left: 2%;

@@ -61,9 +61,9 @@ namespace ForeverDeploy.Models
 		}
 
 		
-		//Gets the authors name
-		[JsonProperty("authorName")]
-		public string AuthorName
+		//Gets the authors email
+		[JsonProperty("authorEmail")]
+		public string AuthorEmail
 		{
 			get
 			{
@@ -77,9 +77,9 @@ namespace ForeverDeploy.Models
 			}
 		}
 
-		//Gets the authors email
-		[JsonProperty("authorEmail")]
-		public string AuthorEmail
+		//Gets the authors name
+		[JsonProperty("authorName")]
+		public string AuthorName
 		{
 			get
 			{

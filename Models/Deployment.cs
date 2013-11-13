@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace ForeverDeploy.Models
@@ -24,11 +26,11 @@ namespace ForeverDeploy.Models
 		//Date the deployment was updated
 		[JsonIgnore]
 		public DateTime DateUpdatedUTC { get; set; }
-		
+
 		//Date the deployment was built
 		[JsonIgnore]
 		public DateTime DateBuiltUTC { get; set; }
-		
+
 		//Date the deployment was deployed
 		[JsonIgnore]
 		public DateTime DateDeployedUTC { get; set; }
@@ -36,7 +38,7 @@ namespace ForeverDeploy.Models
 		//Commit foreign key
 		[JsonIgnore]
 		public int CommitId { get; set; }
-		
+
 		//Lazy loaded commit object
 		[JsonProperty("commit")]
 		public virtual DeployedCommit Commit { get; set; }
@@ -99,6 +101,27 @@ namespace ForeverDeploy.Models
 			}
 		}
 
+		/// <summary>
+		/// An image of the deployment author
+		/// </summary>
+		[JsonProperty("deploymentImage")]
+		public string DeploymentImage
+		{
+			get
+			{
+				//Base url for gravatar
+				return "https://www.gravatar.com/avatar/"
+
+					//Convert the authors email into hash
+					+ BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(Commit.AuthorEmail.ToLower()))).Replace("-", "").ToLower()
+
+					//Size of image
+					+ "?s=170"
+
+					//Default to retro if email not registered
+					+ "&d=retro";
+			}
+		}
 	}
 
 

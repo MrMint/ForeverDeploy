@@ -1,1 +1,40 @@
-﻿
+﻿<div class="bodyContainer" ng-show="!loading">
+    <div class="getStartedContainer">
+        <span class="green getStartedTitle">Not sure how to push code to ForeverDeploy? It's Simple!</span><br />
+        <br />
+
+        <span><span class="getStartedStep">Step 1:</span> Write awesome code.</span><br />
+        <br />
+
+        <span><span class="getStartedStep">Step 2:</span> Make a commit, and add #deploy to the message.</span>
+        <ul>
+            <li class="green"><span>git commit -m "commit message here #deploy"</span></li>
+        </ul>
+        <span><span class="getStartedStep">Step 3:</span> Push to the repository, and watch  <span class="teal normal">ForeverDeploy</span> do its magic!</span><br />
+        <br />
+    </div>
+    <div class="howItWorksContainer">
+        <span class="green getStartedTitle">How does ForeverDeploy work?</span><br />
+        <br />
+        <span class="green getStartedTitle">Deployment:</span><br />
+        <ul>
+            <li><span>The remote git repository notifies <span class="teal normal">ForeverDeploy</span> of new commits via a POST.</span></li>
+            <li><span><span class="teal normal">ForeverDeploy</span> parses this message, and determines which commit/branch is needed.</span></li>
+            <li><span><span class="teal normal">ForeverDeploy</span> then issues the proper git commands to update the local repo.</span></li>
+            <li><span>The updated source code is then compiled and deployed</span></li>
+        </ul>
+        <br />
+        <span class="green getStartedTitle">Web Interface:</span><br />
+        <ul>
+            <li><span>Upon connecting, <span class="teal normal">ForeverDeploy</span> returns an AngularJS application, accompanied by some HTML templates.</span></li>
+            <li><span>The AngularJs application then connects to the server via WebSockets.</span></li>
+            <li><span><span class="teal normal">ForeverDeploy</span> is now able to push real-time updates to the AngularJS application.</span>
+                <ul>
+                    <li><span>Deployment status updates.</span></li>
+                    <li><span>Application specific updates such as server status.</span></li>
+                </ul>
+            </li>
+            <li><span>AngularJS then handles updating/manipulating the DOM, for a rich user experience.</span></li>
+        </ul>
+    </div>
+</div>

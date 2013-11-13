@@ -148,16 +148,19 @@ footer {
         opacity: 1;
         display: inherit;
     }
+
 .loading.logLoading {
-padding-top:40%;
-opacity:0;
-display:none;
-z-index:10;
+    padding-top: 40%;
+    opacity: 0;
+    display: none;
+    z-index: 10;
 }
+
     .loading.logLoading.show {
         opacity: 1;
         display: inherit;
     }
+
 .blue {
     font-size: 18px;
     color: #5FC1F5;
@@ -220,4 +223,33 @@ z-index:10;
     position: fixed;
     top: 50px;
     right: 10px;
+}
+
+.getStartedContainer {
+    background-color: #fff;
+    padding: 15px;
+    float: left;
+    width: calc(100% - 30px);
+    margin-bottom: 25px;
+}
+
+.getStartedStep {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.getStartedTitle {
+    font-size: 20px;
+}
+
+.howItWorksContainer {
+    background-color: #fff;
+    padding: 15px;
+    float: left;
+    width: calc(100% - 30px);
+    margin-bottom: 25px;
+}
+
+.normal {
+    font-size: 16px;
 }

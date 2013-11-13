@@ -1,5 +1,5 @@
 ﻿<div class="serverStatusDashboard">
-    <div class="serverStatusContainer" ng-repeat="server in servers">
+    <div class="serverStatusContainer animated pulse" ng-repeat="server in servers">
         <div class="serverStatusBar" ng-class="{bgGreen: server.serverStatus == 3, bgRed: server.serverStatus == 1, bgBlue: server.serverStatus == 2}"></div>
         <div class="serverName">{{server.name}}</div>
         <div class="serverStatus" ng-class="{green: server.serverStatus == 3, red: server.serverStatus == 1, blue: server.serverStatus == 2}">

@@ -19,7 +19,7 @@ namespace ForeverDeploy
 		{
 			try
 			{
-				//Load config
+				//Load config file
 				var configFile = new XmlDocument();
 				configFile.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Voxelscape.config"));
 				var config = configFile["configuration"];

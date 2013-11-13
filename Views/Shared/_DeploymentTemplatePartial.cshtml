@@ -1,7 +1,8 @@
 ﻿<div class="deployment animated" ng-class="{shadow: $index==0, hideLog: $index != 0, fadeOutDown: $index > 2}" ng-repeat="deployment in deployments">
     <div class="deployStatus" ng-class="{bgGreen: statusBar($index)=='deployed', bgRed: statusBar($index)=='failed', bgBlue: statusBar($index)=='deploying', deployStatusActive: $index==0}"></div>
     <div class="deploymentDashboard">
-        <div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>
+        @*<div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>*@
+        <div class="deploymentIcon"><img src="{{deployment.deploymentImage}}" /></div>
         <div class="deploymentInfo">
 
             <div class="row">
@@ -11,7 +12,7 @@
                 <div class="deployedOn" ng-show="showElement('deployed',$index) && $index == 0">
                     <i class="fa fa-check-circle green"></i><span class="activeText green">&nbsp;&nbsp;ACTIVE DEPLOYMENT:</span>&nbsp;&nbsp;{{deployment.dateDeployedUTCTicksUnix | date:'EEEE, MMMM d, y  h:mm a'}}
                 </div>
-                <div class="deployedOn" ng-show="$index != 0 && ( statusBar($index)=='deployed' || statusBar($index)=='failed')" >
+                <div class="deployedOn" ng-show="$index != 0 && ( statusBar($index)=='deployed' || statusBar($index)=='failed')">
                     <i class="fa fa-check-circle green" ng-show="statusBar($index)=='deployed'"></i>
                     <i class="fa fa-exclamation-circle red" ng-show="statusBar($index)=='failed'"></i>
                     {{deployment.dateDeployedUTCTicksUnix | date:'EEEE, MMMM d, y  h:mm a'}}
