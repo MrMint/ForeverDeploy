@@ -39,6 +39,7 @@
     float: left;
     width: 100%;
     margin-bottom: 3px;
+    cursor: pointer;
 }
 
 .deployment.hideLog {
@@ -58,8 +59,9 @@
         line-height: 90px;
         color: #fff;
     }
-        .deploymentIcon img {
-            width:100%;
+
+    .deploymentIcon img {
+        width: 100%;
     }
 
 .deploymentInfo {
@@ -169,6 +171,11 @@
     font-size: 14px;
 }
 
+    .logViewLog:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
 .logRow {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -177,8 +184,9 @@
 }
 
 #logs {
-    margin:15px;
+    margin: 15px;
 }
+
 .rowDivider {
     float: left;
     width: 100%;
@@ -200,10 +208,11 @@
 
 /* SERVER STATUS*/
 #serverStatusContainer {
-    position:relative;
-    float:left;
-    width:100%;
+    position: relative;
+    float: left;
+    width: 100%;
 }
+
 .serverStatusDashboard {
     display: -webkit-flexbox;
     display: -ms-flexbox;
@@ -216,8 +225,8 @@
     -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
     justify-content: space-between;
-    width:100%;
-    margin-bottom:30px;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 .serverStatusContainer {
@@ -225,10 +234,10 @@
     -ms-flex: 0 0 150px;
     flex: 0 0 150px;*/
     width: 150px;
-    height:70px;
+    height: 70px;
     background-color: #fff;
     box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.39);
-    position:relative;
+    position: relative;
 }
 
 .serverName {
@@ -240,7 +249,7 @@
 .serverStatus {
     font-size: 18px;
     line-height: 35px;
-    text-align:center;
+    text-align: center;
     margin-top: -3px;
 }
 

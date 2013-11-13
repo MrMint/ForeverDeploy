@@ -269,6 +269,7 @@
     <Content Include="Content\css\loadingSpinner.css" />
     <Content Include="Content\css\percentSpinner.css" />
     <Content Include="Content\css\site.css" />
+    <Content Include="Content\img\FDLogo128.png" />
     <Content Include="Content\img\infinity-single-black.svg" />
     <Content Include="Content\js\controllers\dashboard.js" />
     <Content Include="Content\js\controllers\getStarted.js" />

@@ -49,6 +49,7 @@ footer {
         line-height: 28px;
         font-weight: 300;
         float: left;
+        z-index: 5;
     }
 
 .spacerRight {
@@ -78,13 +79,26 @@ footer {
         }
 
 .brandLogo {
-    position: absolute;
-    top: -35px;
+    float: left;
+    margin-top: -25px;
+    width: 75px;
+    /*position: absolute;
+    top: -25px;
     left: 30px;
     fill: #5FC2AF !important;
-    width: 170px;
-    opacity: .1;
-    z-index: 1;
+    width: 75px;
+    opacity: 1;
+    z-index: 1;*/
+}
+
+.branding {
+    position: fixed;
+    bottom: -15px;
+    left: 0px;
+    fill: #5FC2AF !important;
+    width: 128px;
+    z-index: -1;
+    opacity: .8;
 }
 
 .bodyContainer {
@@ -252,4 +266,11 @@ footer {
 
 .normal {
     font-size: 16px;
+}
+
+
+.cc {
+    position: fixed;
+    left: 130px;
+    bottom: -10px;
 }

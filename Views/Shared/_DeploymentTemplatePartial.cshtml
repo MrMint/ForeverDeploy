@@ -1,8 +1,8 @@
 ﻿<div class="deployment animated" ng-class="{shadow: $index==0, hideLog: $index != 0, fadeOutDown: $index > 2}" ng-repeat="deployment in deployments">
     <div class="deployStatus" ng-class="{bgGreen: statusBar($index)=='deployed', bgRed: statusBar($index)=='failed', bgBlue: statusBar($index)=='deploying', deployStatusActive: $index==0}"></div>
-    <div class="deploymentDashboard">
-        @*<div class="deploymentIcon"><i class="fa fa-bitbucket"></i></div>*@
-        <div class="deploymentIcon"><img src="{{deployment.deploymentImage}}" /></div>
+    <div class="deploymentDashboard" onclick="showHideLog($(this).children('.expander'),$(this).parent())">
+        <div class="deploymentIcon">
+            <img ng-src="{{deployment.deploymentImage}}" /></div>
         <div class="deploymentInfo">
 
             <div class="row">
@@ -38,7 +38,7 @@
             <svg id="svg"></svg>
         </div>
 
-        <div class="expander" onclick="showHideLog($(this),$(this).parent().parent())"><i class="fa fa-chevron-up"></i></div>
+        <div class="expander"><i class="fa" ng-class="{'fa-chevron-up': $index != 0, 'fa-chevron-down': $index == 0}"></i></div>
     </div>
     <div class="deploymentLog">
         <div class="rowDivider" ng-show="showElement('logPreparing',$index)"></div>
