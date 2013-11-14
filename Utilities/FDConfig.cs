@@ -27,6 +27,9 @@ namespace ForeverDeploy.Utilities
 		public string PrivateKeyPath { get; set; }
 		public string PrivateKeyPassword { get; set; }
 		
+		//POST Token
+		public string PostToken { get; set; }
+
 		//Logger
 		private static Logger log = LogManager.GetCurrentClassLogger();
 

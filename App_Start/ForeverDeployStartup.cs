@@ -37,6 +37,9 @@ namespace ForeverDeploy
 				//Load password
 				FDConfig.Instance.PrivateKeyPassword = config["privateKeyPassword"].InnerText;
 
+				//Load POST Token
+				FDConfig.Instance.PostToken = config["PostToken"].InnerText;
+
 				//Load servers
 				foreach (XmlNode element in config["servers"].ChildNodes)
 				{
@@ -56,6 +59,7 @@ namespace ForeverDeploy
 				log.LogExceptionExt(e);
 				throw new Exception("Error while attempting to load configuration file!");
 			}
+
 			//Start server monitors
 			ServerStatusManager.Instance.StartServerMonitors();
 

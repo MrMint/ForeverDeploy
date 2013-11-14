@@ -254,6 +254,7 @@
     <Compile Include="Models\Server.cs" />
     <Compile Include="Models\ServerStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="ReadMe.md" />
     <Compile Include="Utilities\DeploymentManager.cs" />
     <Compile Include="Utilities\DeploymentUtilities.cs" />
     <Compile Include="Utilities\FDConfig.cs" />
