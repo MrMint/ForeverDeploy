@@ -273,4 +273,5 @@ footer {
     position: fixed;
     left: 130px;
     bottom: -10px;
+    z-index:-1;
 }

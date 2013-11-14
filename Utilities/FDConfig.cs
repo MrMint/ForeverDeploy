@@ -29,6 +29,7 @@ namespace ForeverDeploy.Utilities
 		
 		//POST Token
 		public string PostToken { get; set; }
+
 		//Logger
 		private static Logger log = LogManager.GetCurrentClassLogger();
 
