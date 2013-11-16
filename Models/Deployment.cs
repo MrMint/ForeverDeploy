@@ -100,28 +100,6 @@ namespace ForeverDeploy.Models
 				return DateDeployedUTC.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds; ;
 			}
 		}
-
-		/// <summary>
-		/// An image of the deployment author
-		/// </summary>
-		[JsonProperty("deploymentImage")]
-		public string DeploymentImage
-		{
-			get
-			{
-				//Base url for gravatar
-				return "https://www.gravatar.com/avatar/"
-
-					//Convert the authors email into hash
-					+ BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(Commit.AuthorEmail.ToLower()))).Replace("-", "").ToLower()
-
-					//Size of image
-					+ "?s=170"
-
-					//Default to retro if email not registered
-					+ "&d=retro";
-			}
-		}
 	}
 
 

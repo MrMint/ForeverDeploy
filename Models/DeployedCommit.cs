@@ -6,6 +6,8 @@ using ForeverDeploy.Extensions;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ForeverDeploy.Models
 {
@@ -49,7 +51,29 @@ namespace ForeverDeploy.Models
 
 		[JsonProperty("branch")]
 		public string Branch { get; set; }
-		
+
+		/// <summary>
+		/// An image of the deployment author
+		/// </summary>
+		[JsonProperty("authorImage")]
+		public string AuthorImage
+		{
+			get
+			{
+				//Base url for gravatar
+				return "https://www.gravatar.com/avatar/"
+
+					//Convert the authors email into hash
+					+ BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(AuthorEmail.ToLower()))).Replace("-", "").ToLower()
+
+					//Size of image
+					+ "?s=170"
+
+					//Default to retro if email not registered
+					+ "&d=retro";
+			}
+		}
+
 		//Commit node
 		[JsonProperty("nodeShort")]
 		public string NodeShort
@@ -60,7 +84,7 @@ namespace ForeverDeploy.Models
 			}
 		}
 
-		
+
 		//Gets the authors email
 		[JsonProperty("authorEmail")]
 		public string AuthorEmail

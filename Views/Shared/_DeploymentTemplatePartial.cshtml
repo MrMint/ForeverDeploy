@@ -2,7 +2,7 @@
     <div class="deployStatus" ng-class="{bgGreen: statusBar($index)=='deployed', bgRed: statusBar($index)=='failed', bgBlue: statusBar($index)=='deploying', deployStatusActive: $index==0}"></div>
     <div class="deploymentDashboard" onclick="showHideLog($(this).children('.expander'),$(this).parent())">
         <div class="deploymentIcon">
-            <img ng-src="{{deployment.deploymentImage}}" /></div>
+            <img ng-src="{{deployment.commit.authorImage}}" /></div>
         <div class="deploymentInfo">
 
             <div class="row">
