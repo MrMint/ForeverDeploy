@@ -147,15 +147,9 @@ namespace ForeverDeploy.Utilities
 
 					try
 					{
-						//Debug stuff for running tests
-						//updated = true;
-						//Thread.Sleep(2000);
-
 						//Valid commit found, update repository
 						updated = GitUtilities.UpdateRepository(deployment.Commit);
 						deployment.DateUpdatedUTC = DateTime.UtcNow;
-					
-
 					}
 					//Catch any exceptions thrown while utilizing GIT
 					catch (Exception e)
@@ -180,10 +174,6 @@ namespace ForeverDeploy.Utilities
 							//Repo was updated, time to build!
 							log.Debug("BUILD: Compiling");
 							DeploymentStatus = DeploymentStatus.Building;
-							
-							//Debug stuff for running tests
-							//Thread.Sleep(3000);
-							//compiled = true;
 
 							compiled = DeploymentUtilities.Build(deployment);
 							deployment.DateBuiltUTC = DateTime.UtcNow;
@@ -231,7 +221,7 @@ namespace ForeverDeploy.Utilities
 			}
 		}
 
-		//Helper method for updating connect clients on deployment status
+		//Helper method for updating connected clients on deployment status
 		public void UpdateClients()
 		{
 			Broadcaster.Instance.UpdateClients(deployment);

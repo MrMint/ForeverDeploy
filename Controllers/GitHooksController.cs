@@ -26,29 +26,32 @@ namespace ForeverDeploy.Controllers
 			if (key == FDConfig.Instance.PostToken)
 			{
 				log.Debug("POST from BitBucket received, Form null: {0}, Contains payload key: {1}", Request.Form == null, Request.Form.AllKeys.Contains("payload"));
-
+				RootObject payload;
 				try
 				{
 					//Get payload from POST and deserialize
-					RootObject payload = JsonConvert.DeserializeObject<RootObject>(Request.Form["payload"]);
-					if (payload.commits != null)
-					{
-						log.Debug("Payload de-serialized, {0} commits received", payload.commits.Count);
-
-						//Pass to deployment manager for deployment
-						DeploymentManager.Instance.DeployNewCommits(payload.commits);
-					}
-					else
-					{
-						log.Error("Payload de-serialized, payload.commits is null!");
-					}
+					payload = JsonConvert.DeserializeObject<RootObject>(Request.Form["payload"]);
 				}
 				catch (Exception e)
 				{
 					//Something went wrong deserializing
 					log.Error("Error de-serializing POST payload");
 					log.LogExceptionExt(e);
+					return;
 				}
+
+				if (payload.commits != null)
+				{
+					log.Debug("Payload de-serialized, {0} commits received", payload.commits.Count);
+
+					//Pass to deployment manager for deployment
+					DeploymentManager.Instance.DeployNewCommits(payload.commits);
+				}
+				else
+				{
+					log.Error("Payload de-serialized, payload.commits is null!");
+				}
+
 
 			}
 		}
